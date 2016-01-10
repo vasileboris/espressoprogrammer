@@ -1,0 +1,6 @@
+----------------------- 
+  getClass().getName(): com.espressoprogrammer.naming.packagename.SamePackageAsPath
+getPackage().getName(): com.espressoprogrammer.naming.packagename
+----------------------- 
+  getClass().getName(): com.espressoprogrammer.naming.differentpackagename.DifferentPackageThanPath
+getPackage().getName(): com.espressoprogrammer.naming.differentpackagename
