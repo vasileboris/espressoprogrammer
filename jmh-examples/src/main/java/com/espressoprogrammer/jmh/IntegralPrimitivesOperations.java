@@ -203,7 +203,7 @@ public class IntegralPrimitivesOperations {
     }
 
     /*
-     * Decremenet
+     * Decrement
      */
 
     @Benchmark
