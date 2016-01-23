@@ -1,0 +1,36 @@
+Compiled from "LongFields.java"
+public class com.espressoprogrammer.competition.primitives.stack.LongFields {
+  public com.espressoprogrammer.competition.primitives.stack.LongFields();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+    LineNumberTable:
+      line 3: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       5     0  this   Lcom/espressoprogrammer/competition/primitives/stack/LongFields;
+
+  public static void main(java.lang.String...);
+    Code:
+       0: ldc2_w        #2                  // long 10l
+       3: lstore_1
+       4: ldc2_w        #4                  // long 20l
+       7: lstore_3
+       8: lload_1
+       9: lload_3
+      10: ladd
+      11: lstore        5
+      13: return
+    LineNumberTable:
+      line 6: 0
+      line 7: 4
+      line 9: 8
+      line 10: 13
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      14     0  args   [Ljava/lang/String;
+          4      10     1 value1   J
+          8       6     3 value2   J
+         13       1     5 result   J
+}

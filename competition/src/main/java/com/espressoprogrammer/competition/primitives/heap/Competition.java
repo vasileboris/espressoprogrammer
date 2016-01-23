@@ -1,11 +1,11 @@
-package com.espressoprogrammer.competition.primitives;
+package com.espressoprogrammer.competition.primitives.heap;
 
 import org.github.jamm.MemoryMeter;
 
 public class Competition {
 
     public static void main(String... args) {
-        MemoryMeter memoryMeter = new MemoryMeter();
+        MemoryMeter memoryMeter = new MemoryMeter().enableDebug();
 
         System.out.println("ByteFields: " + memoryMeter.measureDeep(new ByteFields()));
         System.out.println("ByteArray : " + memoryMeter.measureDeep(new ByteArray(Integer.parseInt(args[0]))));

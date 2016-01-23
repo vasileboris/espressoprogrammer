@@ -1,4 +1,4 @@
-package com.espressoprogrammer.competition.primitives;
+package com.espressoprogrammer.competition.primitives.heap;
 
 public class ShortFields {
 

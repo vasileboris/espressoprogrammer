@@ -1,0 +1,37 @@
+Compiled from "ByteFields.java"
+public class com.espressoprogrammer.competition.primitives.stack.ByteFields {
+  public com.espressoprogrammer.competition.primitives.stack.ByteFields();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+    LineNumberTable:
+      line 3: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       5     0  this   Lcom/espressoprogrammer/competition/primitives/stack/ByteFields;
+
+  public static void main(java.lang.String...);
+    Code:
+       0: bipush        10
+       2: istore_1
+       3: bipush        20
+       5: istore_2
+       6: iload_1
+       7: iload_2
+       8: iadd
+       9: i2b
+      10: istore_3
+      11: return
+    LineNumberTable:
+      line 6: 0
+      line 7: 3
+      line 9: 6
+      line 10: 11
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      12     0  args   [Ljava/lang/String;
+          3       9     1 value1   B
+          6       6     2 value2   B
+         11       1     3 result   B
+}
