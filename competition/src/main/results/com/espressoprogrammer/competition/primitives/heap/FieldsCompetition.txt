@@ -1,0 +1,46 @@
+
+
+root [com.espressoprogrammer.competition.primitives.heap.ComposeFields] 32 bytes (32 bytes)
+
+No fields : 32
+
+
+root [com.espressoprogrammer.competition.primitives.heap.ComposeFields] 48 bytes (32 bytes)
+  |
+  +--byteField [com.espressoprogrammer.competition.primitives.heap.ByteField] 16 bytes (16 bytes)
+
+ByteField : 48
+
+
+root [com.espressoprogrammer.competition.primitives.heap.ComposeFields] 48 bytes (32 bytes)
+  |
+  +--shortField [com.espressoprogrammer.competition.primitives.heap.ShortField] 16 bytes (16 bytes)
+
+ShortField: 48
+
+
+root [com.espressoprogrammer.competition.primitives.heap.ComposeFields] 48 bytes (32 bytes)
+  |
+  +--intField [com.espressoprogrammer.competition.primitives.heap.IntField] 16 bytes (16 bytes)
+
+IntField  : 48
+
+
+root [com.espressoprogrammer.competition.primitives.heap.ComposeFields] 56 bytes (32 bytes)
+  |
+  +--longField [com.espressoprogrammer.competition.primitives.heap.LongField] 24 bytes (24 bytes)
+
+LongField : 56
+
+
+root [com.espressoprogrammer.competition.primitives.heap.ComposeFields] 104 bytes (32 bytes)
+  |
+  +--byteField [com.espressoprogrammer.competition.primitives.heap.ByteField] 16 bytes (16 bytes)
+  |
+  +--shortField [com.espressoprogrammer.competition.primitives.heap.ShortField] 16 bytes (16 bytes)
+  |
+  +--intField [com.espressoprogrammer.competition.primitives.heap.IntField] 16 bytes (16 bytes)
+  |
+  +--longField [com.espressoprogrammer.competition.primitives.heap.LongField] 24 bytes (24 bytes)
+
+All fields: 104

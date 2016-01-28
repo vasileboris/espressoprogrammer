@@ -1,0 +1,28 @@
+
+
+root [com.espressoprogrammer.competition.primitives.heap.ByteArray] 1.01 KB (16 bytes)
+  |
+  +--array [byte[]] 1016 bytes (1016 bytes)
+
+ByteArray  : 1032
+
+
+root [com.espressoprogrammer.competition.primitives.heap.ShortArray] 1.98 KB (16 bytes)
+  |
+  +--array [short[]] 1.97 KB (1.97 KB)
+
+ShortArray : 2032
+
+
+root [com.espressoprogrammer.competition.primitives.heap.IntArray] 3.94 KB (16 bytes)
+  |
+  +--array [int[]] 3.92 KB (3.92 KB)
+
+IntArray   : 4032
+
+
+root [com.espressoprogrammer.competition.primitives.heap.LongArray] 7.84 KB (16 bytes)
+  |
+  +--array [long[]] 7.83 KB (7.83 KB)
+
+LongArray  : 8032
