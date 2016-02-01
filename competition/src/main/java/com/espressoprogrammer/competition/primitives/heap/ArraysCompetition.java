@@ -12,7 +12,6 @@ public class ArraysCompetition {
         System.out.println("ShortArray : " + memoryMeter.measureDeep(new ShortArray(size)));
         System.out.println("IntArray   : " + memoryMeter.measureDeep(new IntArray(size)));
         System.out.println("LongArray  : " + memoryMeter.measureDeep(new LongArray(size)));
-
     }
 
 }
