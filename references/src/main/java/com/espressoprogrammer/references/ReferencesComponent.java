@@ -23,9 +23,7 @@ import java.lang.ref.PhantomReference;
 import java.lang.ref.ReferenceQueue;
 import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -33,6 +31,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ReferencesComponent {
     private static final int REFERENCES_COUNT_MAX = 10;
     private static final int INSERT_MORE_REFERENCES_MAX = 2;
+    private static final int MILLIS_TO_KEEP_IN_MEMORY_HARD_REFERENCES = 5000;
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -42,14 +41,16 @@ public class ReferencesComponent {
     @Autowired
     private ReferencesCountDAO referencesCountDAO;
 
-    private AtomicInteger softReferencesCount;
-    private AtomicInteger weakReferencesCount;
-    private AtomicInteger phantomReferencesCount;
+    private AtomicInteger softReferredCount;
+    private AtomicInteger weakReferredCount;
+    private AtomicInteger phantomReferredCount;
+    private List<Referred> hardReferences;
     private List<SoftReference<Referred>> softReferences;
     private List<WeakReference<Referred>> weakReferences;
     private List<PhantomReference<Referred>> phantomReferences;
     private List<String> heap;
     private ReferenceQueue<Referred> referredQueue;
+    private long startToKeepInMemoryHardReferences;
 
     public byte[] execute() {
         logger.info("Creating references");
@@ -58,9 +59,7 @@ public class ReferencesComponent {
         prepareForNewExecution();
 
         insertChartData();
-        createSoftReferences();
-        createWeakReferences();
-        createPhantomReferences();
+        createReferences();
         consumeHeap();
 
         clearHeap();
@@ -68,11 +67,12 @@ public class ReferencesComponent {
     }
 
     private void prepareForNewExecution() {
-        softReferencesCount = new AtomicInteger(0);
-        weakReferencesCount = new AtomicInteger(0);
-        phantomReferencesCount = new AtomicInteger(0);
+        softReferredCount = new AtomicInteger(0);
+        weakReferredCount = new AtomicInteger(0);
+        phantomReferredCount = new AtomicInteger(0);
         memoryUsageDAO.deleteAll();
         referencesCountDAO.deleteAll();
+        hardReferences = new LinkedList<>();
         softReferences = new LinkedList<>();
         weakReferences = new LinkedList<>();
         phantomReferences = new LinkedList<>();
@@ -84,45 +84,31 @@ public class ReferencesComponent {
         heap = new LinkedList<>();
     }
 
-    private void createWeakReferences() {
-        createReferences(() -> {
-            weakReferences.add(new WeakReference<>(new Referred("weak", weakReferencesCount)));
-            insertChartData();
-        });
-    }
-
-    private void createSoftReferences() {
-        createReferences(() -> {
-            softReferences.add(new SoftReference<>(new Referred("soft", softReferencesCount)));
-            insertChartData();
-        });
-    }
-
-    private void createPhantomReferences() {
-        createReferences(() -> {
-            phantomReferences.add(new PhantomReference<>(new Referred("phantom", phantomReferencesCount), referredQueue));
-            insertChartData();
-        });
-    }
-
     private void insertChartData() {
         memoryUsageDAO.insert(new MemoryUsage());
-        referencesCountDAO.insert(new ReferencesCount(softReferencesCount.intValue(), weakReferencesCount.intValue(), phantomReferencesCount.intValue()));
+        referencesCountDAO.insert(new ReferencesCount(hardReferences.size(),
+                softReferredCount.intValue(),
+                weakReferredCount.intValue(),
+                phantomReferredCount.intValue()));
     }
 
     private void consumeHeap() {
         logger.info("Start consuming heap");
         try {
-            int insertMoreReferences = INSERT_MORE_REFERENCES_MAX;
+            int insertMoreReferences = 0;
             while(stillHaveReferences()) {
-                if(insertMoreReferences > 0 && wereWeakAndPhantomReferencesGarbageCollected()) {
-                    createSoftReferences();
-                    createWeakReferences();
-                    createPhantomReferences();
-                    insertMoreReferences--;
+                if(insertMoreReferences < INSERT_MORE_REFERENCES_MAX && wereWeakAndPhantomReferencesGarbageCollected()) {
+                    logger.info("Creating more references step {}", insertMoreReferences);
+                    createReferences();
+                    insertMoreReferences++;
                 } else {
                     heap.add(UUID.randomUUID().toString());
                     insertChartData();
+                }
+                if(System.currentTimeMillis() - startToKeepInMemoryHardReferences > MILLIS_TO_KEEP_IN_MEMORY_HARD_REFERENCES && !hardReferences.isEmpty()) {
+                    logger.info("Releasing hard references after {} seconds", TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - startToKeepInMemoryHardReferences));
+                    hardReferences.clear();
+                    sleepMilliseconds(1000);
                 }
             }
         }
@@ -131,6 +117,29 @@ public class ReferencesComponent {
         }
 
         logger.info("Stop consuming heap");
+    }
+
+    private void createReferences() {
+        createReferences(
+                () -> {
+                    Referred referred = new Referred("weak", weakReferredCount);
+                    weakReferences.add(new WeakReference<>(referred));
+                    insertChartData();
+                    return referred;
+                },
+                () -> {
+                    Referred referred = new Referred("soft", softReferredCount);
+                    softReferences.add(new SoftReference<>(referred));
+                    insertChartData();
+                    return referred;
+                },
+                () -> {
+                    Referred referred = new Referred("phantom", phantomReferredCount);
+                    phantomReferences.add(new PhantomReference<>(referred, referredQueue));
+                    insertChartData();
+                    return referred;
+                });
+        startToKeepInMemoryHardReferences = System.currentTimeMillis();
     }
 
     private byte[] generateChartImage() {
@@ -146,18 +155,21 @@ public class ReferencesComponent {
         memoryUsageDataset.addSeries(totalMemorySeries);
         memoryUsageDataset.addSeries(usedMemorySeries);
 
-        TimeSeries softReferencesCountSeries = new TimeSeries("Soft references count");
-        TimeSeries weakReferencesCountSeries = new TimeSeries("Weak references count");
-        TimeSeries phantomReferencesCountSeries = new TimeSeries("Phantom references count");
+        TimeSeries hardReferencesCountSeries = new TimeSeries("Hard references count");
+        TimeSeries softReferredCountSeries = new TimeSeries("Soft referred count");
+        TimeSeries weakReferredCountSeries = new TimeSeries("Weak referred count");
+        TimeSeries phantomReferredCountSeries = new TimeSeries("Phantom referred count");
         referencesCountDAO.retrieveAll().forEach(rc -> {
-            softReferencesCountSeries.addOrUpdate(new Millisecond(rc.getCreated()), rc.getSoftReferencesCount());
-            weakReferencesCountSeries.addOrUpdate(new Millisecond(rc.getCreated()), rc.getWeakReferencesCount());
-            phantomReferencesCountSeries.addOrUpdate(new Millisecond(rc.getCreated()), rc.getPhantomReferencesCount());
+            hardReferencesCountSeries.addOrUpdate(new Millisecond(rc.getCreated()), rc.getHardReferencesCount());
+            softReferredCountSeries.addOrUpdate(new Millisecond(rc.getCreated()), rc.getSoftReferredCount());
+            weakReferredCountSeries.addOrUpdate(new Millisecond(rc.getCreated()), rc.getWeakReferredCount());
+            phantomReferredCountSeries.addOrUpdate(new Millisecond(rc.getCreated()), rc.getPhantomReferredCount());
         });
         TimeSeriesCollection referencesCountDataset = new TimeSeriesCollection();
-        referencesCountDataset.addSeries(softReferencesCountSeries);
-        referencesCountDataset.addSeries(weakReferencesCountSeries);
-        referencesCountDataset.addSeries(phantomReferencesCountSeries);
+        referencesCountDataset.addSeries(hardReferencesCountSeries);
+        referencesCountDataset.addSeries(softReferredCountSeries);
+        referencesCountDataset.addSeries(weakReferredCountSeries);
+        referencesCountDataset.addSeries(phantomReferredCountSeries);
 
         JFreeChart chart = ChartFactory.createTimeSeriesChart("References",
                 "Time",
@@ -176,9 +188,10 @@ public class ReferencesComponent {
         plot.mapDatasetToRangeAxis(1, 1);
 
         plot.setRenderer(1, new StandardXYItemRenderer());
-        plot.getRenderer(1).setSeriesPaint(0, Color.BLUE);
-        plot.getRenderer(1).setSeriesPaint(1, Color.CYAN);
-        plot.getRenderer(1).setSeriesPaint(2, Color.MAGENTA);
+        plot.getRenderer(1).setSeriesPaint(0, Color.BLACK);
+        plot.getRenderer(1).setSeriesPaint(1, Color.BLUE);
+        plot.getRenderer(1).setSeriesPaint(2, Color.CYAN);
+        plot.getRenderer(1).setSeriesPaint(3, Color.MAGENTA);
 
         logger.info("End generating chart");
         logger.info("Start generating chart image");
@@ -189,17 +202,24 @@ public class ReferencesComponent {
         return encoder.pngEncode();
     }
 
-    private <T> void createReferences(ReferenceCreator creator) {
-        int referencesCount = 0;
-        while(referencesCount < REFERENCES_COUNT_MAX) {
-            creator.create();
-
-            referencesCount++;
-
-            sleepMilliseconds(100);
+    private void createReferences(ReferenceCreator<Referred>... creators) {
+        Map<Integer, Integer> referencesCounters = new HashMap<>();
+        for(int i=0; i<creators.length; i++) {
+            referencesCounters.put(i, 0);
         }
 
-        sleepMilliseconds(250);
+        Random random = new Random(System.currentTimeMillis());
+        while(referencesCounters.values().stream().reduce(0, Integer::sum) < REFERENCES_COUNT_MAX * creators.length) {
+            int idx = random.nextInt(creators.length);
+            if(referencesCounters.get(idx) < REFERENCES_COUNT_MAX) {
+                hardReferences.add(creators[idx].create());
+                referencesCounters.put(idx, referencesCounters.get(idx)+1);
+            }
+
+            sleepMilliseconds(250);
+        }
+
+        sleepMilliseconds(1000);
     }
 
     private void sleepMilliseconds(int milliseconds) {
@@ -209,11 +229,11 @@ public class ReferencesComponent {
     }
 
     private boolean stillHaveReferences() {
-        return softReferencesCount.intValue() > 0 || weakReferencesCount.intValue() > 0;
+        return softReferredCount.intValue() > 0 || weakReferredCount.intValue() > 0;
     }
 
     private boolean wereWeakAndPhantomReferencesGarbageCollected() {
-        return weakReferencesCount.intValue() == 0 && phantomReferencesCount.intValue() ==0;
+        return weakReferredCount.intValue() == 0 && phantomReferredCount.intValue() ==0;
     }
 
 }

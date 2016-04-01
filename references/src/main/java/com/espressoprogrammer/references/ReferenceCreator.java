@@ -1,7 +1,7 @@
 package com.espressoprogrammer.references;
 
-public interface ReferenceCreator {
+public interface ReferenceCreator<T> {
 
-    void create();
+    T create();
 
 }
