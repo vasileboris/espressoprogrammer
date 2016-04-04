@@ -152,7 +152,7 @@ public class ReferencesService {
                 }
 
                 if(isElapsedTimeToKeepHardRefencencesInMemory()) {
-                    logger.info("Releasing hard references after {} seconds", TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - startToKeepInMemoryHardReferences));
+                    logger.info("Releasing hard references after {} milliseconds", System.currentTimeMillis() - startToKeepInMemoryHardReferences);
                     hardReferences.clear();
                     sleepMilliseconds(1000);
                 }
