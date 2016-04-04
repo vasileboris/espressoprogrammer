@@ -22,7 +22,7 @@ public class ReferencesCountDAO {
         logger.info("Creating references_count table");
 
         jdbcTemplate.execute("DROP TABLE references_count IF EXISTS");
-        jdbcTemplate.execute("CREATE TABLE references_count (created TIME, hard_references_count INTEGER, soft_referred_count INTEGER, weak_referred_count INTEGER, phantom_referred_count INTEGER)");
+        jdbcTemplate.execute("CREATE TABLE references_count (created TIME, hard_references_count INTEGER, soft_referents_count INTEGER, weak_referents_count INTEGER, phantom_referents_count INTEGER)");
     }
 
     public void deleteAll() {
@@ -32,12 +32,12 @@ public class ReferencesCountDAO {
     }
 
     public void insert(ReferencesCount referencesCount) {
-        jdbcTemplate.update("INSERT INTO references_count(created, hard_references_count, soft_referred_count, weak_referred_count, phantom_referred_count) " +
+        jdbcTemplate.update("INSERT INTO references_count(created, hard_references_count, soft_referents_count, weak_referents_count, phantom_referents_count) " +
                 "VALUES (?,?,?,?,?)", new Time(System.currentTimeMillis()),
                 referencesCount.getHardReferencesCount(),
-                referencesCount.getSoftReferredCount(),
-                referencesCount.getWeakReferredCount(),
-                referencesCount.getPhantomReferredCount());
+                referencesCount.getSoftReferentsCount(),
+                referencesCount.getWeakReferentsCount(),
+                referencesCount.getPhantomReferentsCount());
 
     }
 
@@ -45,11 +45,11 @@ public class ReferencesCountDAO {
         logger.info("Retrieve all from references_count table");
 
         return jdbcTemplate.query(
-                "SELECT created, hard_references_count, soft_referred_count, weak_referred_count, phantom_referred_count FROM references_count ORDER BY created",
+                "SELECT created, hard_references_count, soft_referents_count, weak_referents_count, phantom_referents_count FROM references_count ORDER BY created",
                 (rs, rowNum) -> new ReferencesCount(rs.getTime("created"),
                         rs.getInt("hard_references_count"),
-                        rs.getInt("soft_referred_count"),
-                        rs.getInt("weak_referred_count"),
-                        rs.getInt("phantom_referred_count")));
+                        rs.getInt("soft_referents_count"),
+                        rs.getInt("weak_referents_count"),
+                        rs.getInt("phantom_referents_count")));
     }
 }

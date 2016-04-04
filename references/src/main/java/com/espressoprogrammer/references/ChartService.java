@@ -44,20 +44,20 @@ public class ChartService {
         memoryUsageDataset.addSeries(usedMemorySeries);
 
         TimeSeries hardReferencesCountSeries = new TimeSeries("Hard references count");
-        TimeSeries softReferredCountSeries = new TimeSeries("Soft referred count");
-        TimeSeries weakReferredCountSeries = new TimeSeries("Weak referred count");
-        TimeSeries phantomReferredCountSeries = new TimeSeries("Phantom referred count");
+        TimeSeries softReferentsCountSeries = new TimeSeries("Soft referents count");
+        TimeSeries weakReferentsCountSeries = new TimeSeries("Weak referents count");
+        TimeSeries phantomReferentsCountSeries = new TimeSeries("Phantom referents count");
         referencesCountDAO.retrieveAll().forEach(rc -> {
             hardReferencesCountSeries.addOrUpdate(new Millisecond(rc.getCreated()), rc.getHardReferencesCount());
-            softReferredCountSeries.addOrUpdate(new Millisecond(rc.getCreated()), rc.getSoftReferredCount());
-            weakReferredCountSeries.addOrUpdate(new Millisecond(rc.getCreated()), rc.getWeakReferredCount());
-            phantomReferredCountSeries.addOrUpdate(new Millisecond(rc.getCreated()), rc.getPhantomReferredCount());
+            softReferentsCountSeries.addOrUpdate(new Millisecond(rc.getCreated()), rc.getSoftReferentsCount());
+            weakReferentsCountSeries.addOrUpdate(new Millisecond(rc.getCreated()), rc.getWeakReferentsCount());
+            phantomReferentsCountSeries.addOrUpdate(new Millisecond(rc.getCreated()), rc.getPhantomReferentsCount());
         });
         TimeSeriesCollection referencesCountDataset = new TimeSeriesCollection();
         referencesCountDataset.addSeries(hardReferencesCountSeries);
-        referencesCountDataset.addSeries(softReferredCountSeries);
-        referencesCountDataset.addSeries(weakReferredCountSeries);
-        referencesCountDataset.addSeries(phantomReferredCountSeries);
+        referencesCountDataset.addSeries(softReferentsCountSeries);
+        referencesCountDataset.addSeries(weakReferentsCountSeries);
+        referencesCountDataset.addSeries(phantomReferentsCountSeries);
 
         JFreeChart chart = ChartFactory.createTimeSeriesChart("References",
                 "Time",

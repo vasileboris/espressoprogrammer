@@ -6,24 +6,24 @@ public class ReferencesCount {
 
     private Time created;
     private int hardReferencesCount;
-    private int softReferredCount;
-    private int weakReferredCount;
-    private int phantomReferredCount;
+    private int softReferentsCount;
+    private int weakReferentsCount;
+    private int phantomReferentsCount;
 
-    public ReferencesCount(int hardReferencesCount, int softReferredCount, int weakReferredCount, int phantomReferredCount) {
+    public ReferencesCount(int hardReferencesCount, int softReferentsCount, int weakReferentsCount, int phantomReferentsCount) {
         this.created = new Time(System.currentTimeMillis());
         this.hardReferencesCount = hardReferencesCount;
-        this.softReferredCount = softReferredCount;
-        this.weakReferredCount = weakReferredCount;
-        this.phantomReferredCount = phantomReferredCount;
+        this.softReferentsCount = softReferentsCount;
+        this.weakReferentsCount = weakReferentsCount;
+        this.phantomReferentsCount = phantomReferentsCount;
     }
 
-    public ReferencesCount(Time created, int hardReferencesCount, int softReferredCount, int weakReferredCount, int phantomReferredCount) {
+    public ReferencesCount(Time created, int hardReferencesCount, int softReferentsCount, int weakReferentsCount, int phantomReferentsCount) {
         this.created = created;
         this.hardReferencesCount = hardReferencesCount;
-        this.softReferredCount = softReferredCount;
-        this.weakReferredCount = weakReferredCount;
-        this.phantomReferredCount = phantomReferredCount;
+        this.softReferentsCount = softReferentsCount;
+        this.weakReferentsCount = weakReferentsCount;
+        this.phantomReferentsCount = phantomReferentsCount;
     }
 
     public Time getCreated() {
@@ -34,16 +34,16 @@ public class ReferencesCount {
         return hardReferencesCount;
     }
 
-    public int getSoftReferredCount() {
-        return softReferredCount;
+    public int getSoftReferentsCount() {
+        return softReferentsCount;
     }
 
-    public int getWeakReferredCount() {
-        return weakReferredCount;
+    public int getWeakReferentsCount() {
+        return weakReferentsCount;
     }
 
-    public int getPhantomReferredCount() {
-        return phantomReferredCount;
+    public int getPhantomReferentsCount() {
+        return phantomReferentsCount;
     }
 
     @Override
@@ -51,9 +51,9 @@ public class ReferencesCount {
         return "ReferencesCount{" +
                 "created=" + created +
                 ", hardReferencesCount=" + hardReferencesCount +
-                ", softReferredCount=" + softReferredCount +
-                ", weakReferredCount=" + weakReferredCount +
-                ", phantomReferredCount=" + phantomReferredCount +
+                ", softReferentsCount=" + softReferentsCount +
+                ", weakReferentsCount=" + weakReferentsCount +
+                ", phantomReferentsCount=" + phantomReferentsCount +
                 '}';
     }
 }

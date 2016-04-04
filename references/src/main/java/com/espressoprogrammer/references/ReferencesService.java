@@ -38,12 +38,12 @@ public class ReferencesService {
     private AtomicInteger softReferredCount;
     private AtomicInteger weakReferredCount;
     private AtomicInteger phantomReferredCount;
-    private List<Referred> hardReferences;
-    private List<SoftReference<Referred>> softReferences;
-    private List<WeakReference<Referred>> weakReferences;
-    private List<PhantomReference<Referred>> phantomReferences;
+    private List<Referent> hardReferences;
+    private List<SoftReference<Referent>> softReferences;
+    private List<WeakReference<Referent>> weakReferences;
+    private List<PhantomReference<Referent>> phantomReferences;
     private List<String> heap;
-    private ReferenceQueue<Referred> referredQueue;
+    private ReferenceQueue<Referent> referredQueue;
     private long startToKeepInMemoryHardReferences;
 
     private int referencesCountMax;
@@ -96,28 +96,28 @@ public class ReferencesService {
     private void createReferences() {
         createReferences(
                 () -> {
-                    Referred referred = new Referred("weak", weakReferredCount);
-                    weakReferences.add(new WeakReference<>(referred));
+                    Referent referent = new Referent("weak", weakReferredCount);
+                    weakReferences.add(new WeakReference<>(referent));
                     insertChartData();
-                    return referred;
+                    return referent;
                 },
                 () -> {
-                    Referred referred = new Referred("soft", softReferredCount);
-                    softReferences.add(new SoftReference<>(referred));
+                    Referent referent = new Referent("soft", softReferredCount);
+                    softReferences.add(new SoftReference<>(referent));
                     insertChartData();
-                    return referred;
+                    return referent;
                 },
                 () -> {
-                    Referred referred = new Referred("phantom", phantomReferredCount);
-                    phantomReferences.add(new PhantomReference<>(referred, referredQueue));
+                    Referent referent = new Referent("phantom", phantomReferredCount);
+                    phantomReferences.add(new PhantomReference<>(referent, referredQueue));
                     insertChartData();
-                    return referred;
+                    return referent;
                 });
         startToKeepInMemoryHardReferences = System.currentTimeMillis();
     }
 
     @SafeVarargs
-    private final void createReferences(ReferenceCreator<Referred>... creators) {
+    private final void createReferences(ReferenceCreator<Referent>... creators) {
         Map<Integer, Integer> referencesCounters = new HashMap<>();
         for(int i=0; i<creators.length; i++) {
             referencesCounters.put(i, 0);
