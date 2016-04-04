@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.lang.ref.PhantomReference;
@@ -64,6 +65,7 @@ public class ReferencesService {
         createReferences();
         consumeHeap();
 
+        logHeapCount();
         clearHeap();
         return chartService.generateChartImage();
     }
@@ -191,6 +193,13 @@ public class ReferencesService {
         try {
             TimeUnit.MILLISECONDS.sleep(milliseconds);
         } catch (InterruptedException e) {}
+    }
+
+    private void logHeapCount() {
+        logger.info("heap count: {} ", CollectionUtils.isEmpty(heap) ? 0 : heap.size());
+        logger.info("softReferences count: {} ", CollectionUtils.isEmpty(softReferences) ? 0 : softReferences.size());
+        logger.info("weakReferences count: {} ", CollectionUtils.isEmpty(weakReferences) ? 0 : weakReferences.size());
+        logger.info("phantomReferences count: {} ", CollectionUtils.isEmpty(phantomReferences) ? 0 : phantomReferences.size());
     }
 
 }
