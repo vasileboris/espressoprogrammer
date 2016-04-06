@@ -36,15 +36,15 @@ public class ReferencesService {
     @Autowired
     private ChartService chartService;
 
-    private AtomicInteger softReferredCount;
-    private AtomicInteger weakReferredCount;
-    private AtomicInteger phantomReferredCount;
+    private AtomicInteger softReferentCount;
+    private AtomicInteger weakReferentCount;
+    private AtomicInteger phantomReferentCount;
     private List<Referent> hardReferences;
     private List<SoftReference<Referent>> softReferences;
     private List<WeakReference<Referent>> weakReferences;
     private List<PhantomReference<Referent>> phantomReferences;
     private List<String> heap;
-    private ReferenceQueue<Referent> referredQueue;
+    private ReferenceQueue<Referent> referentQueue;
     private long startToKeepInMemoryHardReferences;
 
     private int referencesCountMax;
@@ -75,14 +75,14 @@ public class ReferencesService {
     }
 
     private void prepareForNewExecution() {
-        softReferredCount = new AtomicInteger(0);
-        weakReferredCount = new AtomicInteger(0);
-        phantomReferredCount = new AtomicInteger(0);
+        softReferentCount = new AtomicInteger(0);
+        weakReferentCount = new AtomicInteger(0);
+        phantomReferentCount = new AtomicInteger(0);
         hardReferences = new LinkedList<>();
         softReferences = new LinkedList<>();
         weakReferences = new LinkedList<>();
         phantomReferences = new LinkedList<>();
-        referredQueue = new ReferenceQueue<>();
+        referentQueue = new ReferenceQueue<>();
         memoryUsageDAO.deleteAll();
         referencesCountDAO.deleteAll();
     }
@@ -90,28 +90,28 @@ public class ReferencesService {
     private void insertChartData() {
         memoryUsageDAO.insert(new MemoryUsage());
         referencesCountDAO.insert(new ReferencesCount(hardReferences.size(),
-                softReferredCount.intValue(),
-                weakReferredCount.intValue(),
-                phantomReferredCount.intValue()));
+                softReferentCount.intValue(),
+                weakReferentCount.intValue(),
+                phantomReferentCount.intValue()));
     }
 
     private void createReferences() {
         createReferences(
                 () -> {
-                    Referent referent = new Referent("weak", weakReferredCount);
+                    Referent referent = new Referent("weak", weakReferentCount);
                     weakReferences.add(new WeakReference<>(referent));
                     insertChartData();
                     return referent;
                 },
                 () -> {
-                    Referent referent = new Referent("soft", softReferredCount);
+                    Referent referent = new Referent("soft", softReferentCount);
                     softReferences.add(new SoftReference<>(referent));
                     insertChartData();
                     return referent;
                 },
                 () -> {
-                    Referent referent = new Referent("phantom", phantomReferredCount);
-                    phantomReferences.add(new PhantomReference<>(referent, referredQueue));
+                    Referent referent = new Referent("phantom", phantomReferentCount);
+                    phantomReferences.add(new PhantomReference<>(referent, referentQueue));
                     insertChartData();
                     return referent;
                 });
@@ -168,11 +168,11 @@ public class ReferencesService {
     }
 
     private boolean stillHaveReferences() {
-        return softReferredCount.intValue() > 0 || weakReferredCount.intValue() > 0;
+        return softReferentCount.intValue() > 0 || weakReferentCount.intValue() > 0;
     }
 
     private boolean wereWeakAndPhantomReferencesGarbageCollected() {
-        return weakReferredCount.intValue() == 0 && phantomReferredCount.intValue() ==0;
+        return weakReferentCount.intValue() == 0 && phantomReferentCount.intValue() ==0;
     }
 
     private void addObjectsInHeap() {

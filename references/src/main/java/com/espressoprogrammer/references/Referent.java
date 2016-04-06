@@ -12,14 +12,14 @@ public class Referent {
     private AtomicInteger referencesCount;
 
     public Referent(String referenceType, AtomicInteger referencesCount) {
-        logger.info("Create new " + referenceType + " referred instance");
+        logger.info("Create new " + referenceType + " referent instance");
         this.referenceType = referenceType;
         this.referencesCount = referencesCount;
         this.referencesCount.incrementAndGet();
     }
 
     protected void finalize() {
-        logger.info("Release " + referenceType + " referred instance");
+        logger.info("Release " + referenceType + " referent instance");
         referencesCount.decrementAndGet();
     }
 
