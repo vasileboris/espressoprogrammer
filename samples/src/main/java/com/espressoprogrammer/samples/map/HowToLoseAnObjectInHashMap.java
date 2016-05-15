@@ -3,23 +3,24 @@ package com.espressoprogrammer.samples.map;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BreakHashMapContract {
+public class HowToLoseAnObjectInHashMap {
 
     public static void main(String... args) {
         Map<Key, String> map = new HashMap<>();
 
         Key key = new Key("key1");
         map.put(key, "value1");
-        println(map, new Key("key1"));
+        printMapAndValue(map, new Key("key1"));
 
         key.setValue("key2");
-        println(map, new Key("key1"));
+        printMapAndValue(map, new Key("key1"));
+        printMapAndValue(map, new Key("key2"));
 
         key.setValue("key1");
-        println(map, new Key("key1"));
+        printMapAndValue(map, new Key("key1"));
     }
 
-    static void println(Map<Key, String> map, Key key) {
+    static void printMapAndValue(Map<Key, String> map, Key key) {
         System.out.println("-------------------------------------");
         System.out.println("map: " + map);
         System.out.println("map.get(" + key + "): " + map.get(key));
