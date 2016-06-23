@@ -1,6 +1,5 @@
 package com.espressoprogrammer.hello;
 
-import com.sun.jersey.api.client.filter.LoggingFilter;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
 import org.junit.Rule;
@@ -13,8 +12,6 @@ import org.springframework.http.MediaType;
 import org.springframework.restdocs.JUnitRestDocumentation;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import java.util.logging.Logger;
 
 import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -73,7 +70,7 @@ public class GreetingServiceTest extends JerseyTest {
 
     @Override
     public ResourceConfig configure() {
-        return new ResourceConfig(GreetingService.class).register(new LoggingFilter(Logger.getAnonymousLogger()));
+        return new ResourceConfig(GreetingService.class);
     }
 
 }

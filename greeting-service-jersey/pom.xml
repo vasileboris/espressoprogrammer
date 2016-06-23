@@ -15,6 +15,11 @@
 
     <properties>
         <jersey.test.framework.version>1.19</jersey.test.framework.version>
+        <jersey.test.framework.provider.grizzly2.version>2.23.1</jersey.test.framework.provider.grizzly2.version>
+        <spring.restdocs.restassured.version>1.1.0.RELEASE</spring.restdocs.restassured.version>
+        <spring.restdocs.core.version>1.1.0.RELEASE</spring.restdocs.core.version>
+        <system.rules.version>1.16.0</system.rules.version>
+        <asciidoctor.maven.plugin.version>1.5.2</asciidoctor.maven.plugin.version>
     </properties>
 
     <dependencies>
@@ -36,26 +41,26 @@
         <dependency>
             <groupId>org.glassfish.jersey.test-framework.providers</groupId>
             <artifactId>jersey-test-framework-provider-grizzly2</artifactId>
-            <version>2.23.1</version>
+            <version>${jersey.test.framework.provider.grizzly2.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.restdocs</groupId>
             <artifactId>spring-restdocs-restassured</artifactId>
-            <version>1.1.0.RELEASE</version>
+            <version>${spring.restdocs.restassured.version}</version>
             <scope>test</scope>
         </dependency>
         <!-- It fails with spring-restdocs-core from spring-restdocs-restassured -->
         <dependency>
             <groupId>org.springframework.restdocs</groupId>
             <artifactId>spring-restdocs-core</artifactId>
-            <version>1.1.0.RELEASE</version>
+            <version>${spring.restdocs.core.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.github.stefanbirkner</groupId>
             <artifactId>system-rules</artifactId>
-            <version>1.16.0</version>
+            <version>${system.rules.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -78,7 +83,7 @@
             <plugin>
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctor-maven-plugin</artifactId>
-                <version>1.5.2</version>
+                <version>${asciidoctor.maven.plugin.version}</version>
                 <executions>
                     <execution>
                         <id>generate-docs</id>
