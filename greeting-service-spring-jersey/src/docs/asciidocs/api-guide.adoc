@@ -1,0 +1,55 @@
+= Greeting REST Service API Guide
+Spring and Jersey implementation;
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+= Resources
+
+== Greeting REST Service
+
+The Greeting provides the entry point into the service.
+
+=== Accessing the greeting GET with provided content
+
+==== Request structure
+
+include::{snippets}/greeting-service-test/greeting-get-with-provided-content/http-request.adoc[]
+
+==== Request parameters
+
+include::{snippets}/greeting-service-test/greeting-get-with-provided-content/request-parameters.adoc[]
+
+==== Response fields
+
+include::{snippets}/greeting-service-test/greeting-get-with-provided-content/response-fields.adoc[]
+
+==== Example response
+
+include::{snippets}/greeting-service-test/greeting-get-with-provided-content/http-response.adoc[]
+
+==== CURL request
+
+include::{snippets}/greeting-service-test/greeting-get-with-provided-content/curl-request.adoc[]
+
+=== Accessing the greeting GET with default content
+
+==== Request structure
+
+include::{snippets}/greeting-service-test/greeting-get-with-default-content/http-request.adoc[]
+
+==== Response fields
+
+include::{snippets}/greeting-service-test/greeting-get-with-default-content/response-fields.adoc[]
+
+==== Example response
+
+include::{snippets}/greeting-service-test/greeting-get-with-default-content/http-response.adoc[]
+
+==== CURL request
+
+include::{snippets}/greeting-service-test/greeting-get-with-default-content/curl-request.adoc[]
+
