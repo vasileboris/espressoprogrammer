@@ -44,19 +44,12 @@ public class GreetingServiceTest extends JerseyTest {
     @Rule
     public JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation("target/generated-snippets");
 
-    private static ClientConfig createClientConfig() {
-        ClientConfig clientConfig = new DefaultClientConfig();
-        clientConfig.getClasses().add(JacksonJaxbJsonProvider.class);
-        return clientConfig;
-    }
-
     public GreetingServiceTest() {
         super(new WebAppDescriptor.Builder("com.espressoprogrammer.hello;org.codehaus.jackson.jaxrs")
             .contextPath("greeting-service")
             .contextParam("contextConfigLocation", "classpath:/test-applicationContext.xml")
             .servletClass(SpringServlet.class)
             .contextListenerClass(ContextLoaderListener.class)
-            .clientConfig(createClientConfig())
             .build());
     }
 
