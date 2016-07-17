@@ -1,11 +1,8 @@
 package com.espressoprogrammer.hello;
 
-import com.sun.jersey.api.client.config.ClientConfig;
-import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.spi.spring.container.servlet.SpringServlet;
 import com.sun.jersey.test.framework.JerseyTest;
 import com.sun.jersey.test.framework.WebAppDescriptor;
-import org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
