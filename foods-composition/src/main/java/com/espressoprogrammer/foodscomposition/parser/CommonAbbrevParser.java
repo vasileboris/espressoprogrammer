@@ -4,10 +4,6 @@ import com.espressoprogrammer.foodscomposition.dto.Abbrev;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.net.URISyntaxException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 /**
  * It contains common functionality needed by implementations of {@link AbbrevParser}
  */
@@ -28,10 +24,6 @@ public abstract class CommonAbbrevParser implements AbbrevParser {
 
     protected Integer getInteger(String rawValue) {
         return Integer.valueOf(rawValue);
-    }
-
-    protected Path getAbbrevURI(String fileName) throws URISyntaxException {
-        return Paths.get(getClass().getResource(fileName).toURI());
     }
 
     @Override
