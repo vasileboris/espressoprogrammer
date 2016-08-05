@@ -1,6 +1,8 @@
 package com.espressoprogrammer.foodscomposition.parser;
 
 import com.espressoprogrammer.foodscomposition.dto.Abbrev;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.URISyntaxException;
 import java.nio.file.Path;
@@ -10,6 +12,7 @@ import java.nio.file.Paths;
  * It contains common functionality needed by implementations of {@link AbbrevParser}
  */
 public abstract class CommonAbbrevParser implements AbbrevParser {
+    protected Logger logger = LoggerFactory.getLogger(getClass());
 
     protected String getString(String rawValue) {
         if(!rawValue.startsWith(TEXT_FIELD_DELIMITER)) {
@@ -27,8 +30,8 @@ public abstract class CommonAbbrevParser implements AbbrevParser {
         return Integer.valueOf(rawValue);
     }
 
-    protected Path getAbbrevURI() throws URISyntaxException {
-        return Paths.get(getClass().getResource("/sr28abbr/ABBREV.txt").toURI());
+    protected Path getAbbrevURI(String fileName) throws URISyntaxException {
+        return Paths.get(getClass().getResource(fileName).toURI());
     }
 
     @Override

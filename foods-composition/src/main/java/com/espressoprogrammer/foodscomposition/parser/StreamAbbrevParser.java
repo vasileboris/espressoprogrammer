@@ -15,11 +15,12 @@ import java.util.stream.Stream;
 public class StreamAbbrevParser extends CommonAbbrevParser {
 
     @Override
-    public List<Abbrev> parseFile() {
-        try (Stream<String> stream = Files.lines(getAbbrevURI(), StandardCharsets.ISO_8859_1)) {
+    public List<Abbrev> parseFile(String fileName) {
+        logger.info("Parsing {} file", fileName);
+        try (Stream<String> stream = Files.lines(getAbbrevURI(fileName), StandardCharsets.ISO_8859_1)) {
             return stream.map(this::parseLine).collect(Collectors.toList());
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+            logger.error("Failed to parse ABBREV.txt file", ex);
         }
         return new LinkedList<>();
     }

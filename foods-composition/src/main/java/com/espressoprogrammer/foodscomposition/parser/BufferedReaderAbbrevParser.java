@@ -14,15 +14,16 @@ import java.util.List;
 public class BufferedReaderAbbrevParser extends CommonAbbrevParser {
 
     @Override
-    public List<Abbrev> parseFile() {
+    public List<Abbrev> parseFile(String fileName) {
+        logger.info("Parsing {} file", fileName);
         List<Abbrev> values = new LinkedList<>();
-        try (BufferedReader br = Files.newBufferedReader(getAbbrevURI(), StandardCharsets.ISO_8859_1)) {
+        try (BufferedReader br = Files.newBufferedReader(getAbbrevURI(fileName), StandardCharsets.ISO_8859_1)) {
             String line;
             while((line = br.readLine()) != null) {
                 values.add(parseLine(line));
             }
         } catch (Exception ex)  {
-            ex.printStackTrace();
+            logger.error("Failed to parse ABBREV.txt file", ex);
         }
         return values;
     }

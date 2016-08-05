@@ -15,6 +15,6 @@ public interface AbbrevParser {
 
     Abbrev parseLine(String line);
 
-    List<Abbrev> parseFile();
+    List<Abbrev> parseFile(String fileName);
 
 }
