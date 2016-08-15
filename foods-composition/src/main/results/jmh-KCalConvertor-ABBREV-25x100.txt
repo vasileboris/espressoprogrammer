@@ -1,0 +1,1098 @@
+/usr/lib/jvm/java-8-oracle/bin/java -Didea.launcher.port=7533 -Didea.launcher.bin.path=/media/fastdata/programs/idea-IC-145.1617.8/bin -Dfile.encoding=UTF-8 -classpath /usr/lib/jvm/java-8-oracle/jre/lib/charsets.jar:/usr/lib/jvm/java-8-oracle/jre/lib/deploy.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/cldrdata.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/dnsns.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/jaccess.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/jfxrt.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/localedata.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/nashorn.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/sunec.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/sunjce_provider.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/sunpkcs11.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/zipfs.jar:/usr/lib/jvm/java-8-oracle/jre/lib/javaws.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jce.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jfr.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jfxswt.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jsse.jar:/usr/lib/jvm/java-8-oracle/jre/lib/management-agent.jar:/usr/lib/jvm/java-8-oracle/jre/lib/plugin.jar:/usr/lib/jvm/java-8-oracle/jre/lib/resources.jar:/usr/lib/jvm/java-8-oracle/jre/lib/rt.jar:/media/fastdata/work/espressoprogrammer-code/foods-composition/target/classes:/home/boris/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib/1.0.3/kotlin-stdlib-1.0.3.jar:/home/boris/.m2/repository/org/jetbrains/kotlin/kotlin-runtime/1.0.3/kotlin-runtime-1.0.3.jar:/home/boris/.m2/repository/log4j/log4j/1.2.17/log4j-1.2.17.jar:/home/boris/.m2/repository/org/slf4j/slf4j-log4j12/1.7.21/slf4j-log4j12-1.7.21.jar:/home/boris/.m2/repository/org/slf4j/slf4j-api/1.7.21/slf4j-api-1.7.21.jar:/home/boris/.m2/repository/org/openjdk/jmh/jmh-core/1.13/jmh-core-1.13.jar:/home/boris/.m2/repository/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6.jar:/home/boris/.m2/repository/org/apache/commons/commons-math3/3.2/commons-math3-3.2.jar:/media/fastdata/programs/idea-IC-145.1617.8/lib/idea_rt.jar com.intellij.rt.execution.application.AppMain com.espressoprogrammer.foodscomposition.jmh.KCalConvertor
+# JMH 1.13 (released 23 days ago)
+# VM version: JDK 1.8.0_91, VM 25.91-b14
+# VM invoker: /usr/lib/jvm/java-8-oracle/jre/bin/java
+# VM options: -Didea.launcher.port=7533 -Didea.launcher.bin.path=/media/fastdata/programs/idea-IC-145.1617.8/bin -Dfile.encoding=UTF-8
+# Warmup: 25 iterations, 1 s each
+# Measurement: 100 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.espressoprogrammer.foodscomposition.jmh.KCalConvertor.baseline
+
+# Run progress: 0.00% complete, ETA 00:14:35
+# Fork: 1 of 1
+# Warmup Iteration   1: log4j: reset attribute= "false".
+log4j: Threshold ="null".
+log4j: Level value for root is  [INFO].
+log4j: root level set to INFO
+log4j: Class name: [org.apache.log4j.ConsoleAppender]
+log4j: Parsing layout of class: "org.apache.log4j.PatternLayout"
+log4j: Setting property [conversionPattern] to [%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n].
+log4j: Adding appender named [console] to category [root].
+2016-08-15 10:47:47 INFO  StreamAbbrevParser:23 - Parsing /sr28abbr/ABBREV.txt file
+0.335 ns/op
+# Warmup Iteration   2: 0.322 ns/op
+# Warmup Iteration   3: 0.324 ns/op
+# Warmup Iteration   4: 0.322 ns/op
+# Warmup Iteration   5: 0.324 ns/op
+# Warmup Iteration   6: 0.326 ns/op
+# Warmup Iteration   7: 0.330 ns/op
+# Warmup Iteration   8: 0.332 ns/op
+# Warmup Iteration   9: 0.324 ns/op
+# Warmup Iteration  10: 0.327 ns/op
+# Warmup Iteration  11: 0.324 ns/op
+# Warmup Iteration  12: 0.326 ns/op
+# Warmup Iteration  13: 0.324 ns/op
+# Warmup Iteration  14: 0.323 ns/op
+# Warmup Iteration  15: 0.323 ns/op
+# Warmup Iteration  16: 0.325 ns/op
+# Warmup Iteration  17: 0.321 ns/op
+# Warmup Iteration  18: 0.329 ns/op
+# Warmup Iteration  19: 0.325 ns/op
+# Warmup Iteration  20: 0.322 ns/op
+# Warmup Iteration  21: 0.323 ns/op
+# Warmup Iteration  22: 0.324 ns/op
+# Warmup Iteration  23: 0.323 ns/op
+# Warmup Iteration  24: 0.323 ns/op
+# Warmup Iteration  25: 0.323 ns/op
+Iteration   1: 0.324 ns/op
+Iteration   2: 0.325 ns/op
+Iteration   3: 0.323 ns/op
+Iteration   4: 0.324 ns/op
+Iteration   5: 0.324 ns/op
+Iteration   6: 0.323 ns/op
+Iteration   7: 0.322 ns/op
+Iteration   8: 0.322 ns/op
+Iteration   9: 0.322 ns/op
+Iteration  10: 0.323 ns/op
+Iteration  11: 0.321 ns/op
+Iteration  12: 0.321 ns/op
+Iteration  13: 0.322 ns/op
+Iteration  14: 0.323 ns/op
+Iteration  15: 0.323 ns/op
+Iteration  16: 0.323 ns/op
+Iteration  17: 0.323 ns/op
+Iteration  18: 0.324 ns/op
+Iteration  19: 0.323 ns/op
+Iteration  20: 0.324 ns/op
+Iteration  21: 0.323 ns/op
+Iteration  22: 0.323 ns/op
+Iteration  23: 0.324 ns/op
+Iteration  24: 0.323 ns/op
+Iteration  25: 0.324 ns/op
+Iteration  26: 0.323 ns/op
+Iteration  27: 0.325 ns/op
+Iteration  28: 0.323 ns/op
+Iteration  29: 0.323 ns/op
+Iteration  30: 0.323 ns/op
+Iteration  31: 0.323 ns/op
+Iteration  32: 0.323 ns/op
+Iteration  33: 0.323 ns/op
+Iteration  34: 0.323 ns/op
+Iteration  35: 0.323 ns/op
+Iteration  36: 0.322 ns/op
+Iteration  37: 0.323 ns/op
+Iteration  38: 0.323 ns/op
+Iteration  39: 0.330 ns/op
+Iteration  40: 0.322 ns/op
+Iteration  41: 0.323 ns/op
+Iteration  42: 0.323 ns/op
+Iteration  43: 0.323 ns/op
+Iteration  44: 0.322 ns/op
+Iteration  45: 0.322 ns/op
+Iteration  46: 0.323 ns/op
+Iteration  47: 0.333 ns/op
+Iteration  48: 0.322 ns/op
+Iteration  49: 0.323 ns/op
+Iteration  50: 0.323 ns/op
+Iteration  51: 0.332 ns/op
+Iteration  52: 0.323 ns/op
+Iteration  53: 0.322 ns/op
+Iteration  54: 0.323 ns/op
+Iteration  55: 0.323 ns/op
+Iteration  56: 0.324 ns/op
+Iteration  57: 0.323 ns/op
+Iteration  58: 0.323 ns/op
+Iteration  59: 0.331 ns/op
+Iteration  60: 0.323 ns/op
+Iteration  61: 0.323 ns/op
+Iteration  62: 0.322 ns/op
+Iteration  63: 0.331 ns/op
+Iteration  64: 0.323 ns/op
+Iteration  65: 0.332 ns/op
+Iteration  66: 0.323 ns/op
+Iteration  67: 0.332 ns/op
+Iteration  68: 0.323 ns/op
+Iteration  69: 0.324 ns/op
+Iteration  70: 0.323 ns/op
+Iteration  71: 0.330 ns/op
+Iteration  72: 0.321 ns/op
+Iteration  73: 0.321 ns/op
+Iteration  74: 0.323 ns/op
+Iteration  75: 0.323 ns/op
+Iteration  76: 0.323 ns/op
+Iteration  77: 0.323 ns/op
+Iteration  78: 0.323 ns/op
+Iteration  79: 0.330 ns/op
+Iteration  80: 0.322 ns/op
+Iteration  81: 0.323 ns/op
+Iteration  82: 0.323 ns/op
+Iteration  83: 0.330 ns/op
+Iteration  84: 0.323 ns/op
+Iteration  85: 0.323 ns/op
+Iteration  86: 0.323 ns/op
+Iteration  87: 0.331 ns/op
+Iteration  88: 0.322 ns/op
+Iteration  89: 0.322 ns/op
+Iteration  90: 0.323 ns/op
+Iteration  91: 0.331 ns/op
+Iteration  92: 0.322 ns/op
+Iteration  93: 0.322 ns/op
+Iteration  94: 0.323 ns/op
+Iteration  95: 0.323 ns/op
+Iteration  96: 0.323 ns/op
+Iteration  97: 0.322 ns/op
+Iteration  98: 0.324 ns/op
+Iteration  99: 0.332 ns/op
+Iteration 100: 0.322 ns/op
+
+
+Result "baseline":
+  0.324 ±(99.9%) 0.001 ns/op [Average]
+  (min, avg, max) = (0.321, 0.324, 0.333), stdev = 0.003
+  CI (99.9%): [0.323, 0.325] (assumes normal distribution)
+
+
+# JMH 1.13 (released 23 days ago)
+# VM version: JDK 1.8.0_91, VM 25.91-b14
+# VM invoker: /usr/lib/jvm/java-8-oracle/jre/bin/java
+# VM options: -Didea.launcher.port=7533 -Didea.launcher.bin.path=/media/fastdata/programs/idea-IC-145.1617.8/bin -Dfile.encoding=UTF-8
+# Warmup: 25 iterations, 1 s each
+# Measurement: 100 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.espressoprogrammer.foodscomposition.jmh.KCalConvertor.forEachComplexConvert
+
+# Run progress: 14.29% complete, ETA 00:12:33
+# Fork: 1 of 1
+# Warmup Iteration   1: log4j: reset attribute= "false".
+log4j: Threshold ="null".
+log4j: Level value for root is  [INFO].
+log4j: root level set to INFO
+log4j: Class name: [org.apache.log4j.ConsoleAppender]
+log4j: Parsing layout of class: "org.apache.log4j.PatternLayout"
+log4j: Setting property [conversionPattern] to [%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n].
+log4j: Adding appender named [console] to category [root].
+2016-08-15 10:49:52 INFO  StreamAbbrevParser:23 - Parsing /sr28abbr/ABBREV.txt file
+14200666.239 ns/op
+# Warmup Iteration   2: 11613558.207 ns/op
+# Warmup Iteration   3: 11283258.674 ns/op
+# Warmup Iteration   4: 11218881.533 ns/op
+# Warmup Iteration   5: 11272935.573 ns/op
+# Warmup Iteration   6: 11174056.422 ns/op
+# Warmup Iteration   7: 11280150.809 ns/op
+# Warmup Iteration   8: 11262020.034 ns/op
+# Warmup Iteration   9: 11216628.278 ns/op
+# Warmup Iteration  10: 11346558.022 ns/op
+# Warmup Iteration  11: 11230699.467 ns/op
+# Warmup Iteration  12: 11290524.775 ns/op
+# Warmup Iteration  13: 11292410.663 ns/op
+# Warmup Iteration  14: 11367438.932 ns/op
+# Warmup Iteration  15: 11184674.344 ns/op
+# Warmup Iteration  16: 11229976.833 ns/op
+# Warmup Iteration  17: 11371490.455 ns/op
+# Warmup Iteration  18: 11223617.633 ns/op
+# Warmup Iteration  19: 11299118.753 ns/op
+# Warmup Iteration  20: 11299275.382 ns/op
+# Warmup Iteration  21: 11398190.989 ns/op
+# Warmup Iteration  22: 11165905.844 ns/op
+# Warmup Iteration  23: 11234573.789 ns/op
+# Warmup Iteration  24: 11396894.966 ns/op
+# Warmup Iteration  25: 11479973.545 ns/op
+Iteration   1: 11316150.685 ns/op
+Iteration   2: 11201078.100 ns/op
+Iteration   3: 11272329.270 ns/op
+Iteration   4: 11272489.955 ns/op
+Iteration   5: 11322627.360 ns/op
+Iteration   6: 11392598.807 ns/op
+Iteration   7: 11282741.573 ns/op
+Iteration   8: 11312081.742 ns/op
+Iteration   9: 11296857.820 ns/op
+Iteration  10: 11278507.371 ns/op
+Iteration  11: 11328866.899 ns/op
+Iteration  12: 11341386.270 ns/op
+Iteration  13: 11241575.798 ns/op
+Iteration  14: 11240586.236 ns/op
+Iteration  15: 11284854.191 ns/op
+Iteration  16: 11186868.533 ns/op
+Iteration  17: 11399426.852 ns/op
+Iteration  18: 11124032.867 ns/op
+Iteration  19: 11311714.483 ns/op
+Iteration  20: 11241936.112 ns/op
+Iteration  21: 11205727.800 ns/op
+Iteration  22: 11165747.200 ns/op
+Iteration  23: 12123057.988 ns/op
+Iteration  24: 11315143.551 ns/op
+Iteration  25: 11298667.944 ns/op
+Iteration  26: 11411856.045 ns/op
+Iteration  27: 12748959.861 ns/op
+Iteration  28: 11292537.438 ns/op
+Iteration  29: 11154715.478 ns/op
+Iteration  30: 11164712.778 ns/op
+Iteration  31: 11220140.889 ns/op
+Iteration  32: 11271211.652 ns/op
+Iteration  33: 11187654.200 ns/op
+Iteration  34: 11346616.067 ns/op
+Iteration  35: 11219796.422 ns/op
+Iteration  36: 11229882.622 ns/op
+Iteration  37: 11301483.112 ns/op
+Iteration  38: 11594137.103 ns/op
+Iteration  39: 11248128.831 ns/op
+Iteration  40: 11200270.511 ns/op
+Iteration  41: 11262294.888 ns/op
+Iteration  42: 11322232.506 ns/op
+Iteration  43: 11270760.831 ns/op
+Iteration  44: 11275335.809 ns/op
+Iteration  45: 11331890.843 ns/op
+Iteration  46: 11362063.742 ns/op
+Iteration  47: 11380579.636 ns/op
+Iteration  48: 11339627.393 ns/op
+Iteration  49: 11287742.944 ns/op
+Iteration  50: 11295310.157 ns/op
+Iteration  51: 11393165.489 ns/op
+Iteration  52: 11232675.667 ns/op
+Iteration  53: 11129416.300 ns/op
+Iteration  54: 11244214.494 ns/op
+Iteration  55: 11286312.236 ns/op
+Iteration  56: 11171191.156 ns/op
+Iteration  57: 11270047.270 ns/op
+Iteration  58: 11379329.977 ns/op
+Iteration  59: 11325896.539 ns/op
+Iteration  60: 11224546.833 ns/op
+Iteration  61: 11221217.322 ns/op
+Iteration  62: 11268748.472 ns/op
+Iteration  63: 11298431.191 ns/op
+Iteration  64: 11316646.719 ns/op
+Iteration  65: 11324762.382 ns/op
+Iteration  66: 11278981.022 ns/op
+Iteration  67: 11287881.213 ns/op
+Iteration  68: 11244324.202 ns/op
+Iteration  69: 11271718.596 ns/op
+Iteration  70: 11250988.393 ns/op
+Iteration  71: 11281025.393 ns/op
+Iteration  72: 11326848.764 ns/op
+Iteration  73: 11229157.256 ns/op
+Iteration  74: 11344146.573 ns/op
+Iteration  75: 11281306.225 ns/op
+Iteration  76: 11295721.933 ns/op
+Iteration  77: 11243585.640 ns/op
+Iteration  78: 11211140.422 ns/op
+Iteration  79: 11301321.697 ns/op
+Iteration  80: 11353378.584 ns/op
+Iteration  81: 11310466.360 ns/op
+Iteration  82: 11277525.427 ns/op
+Iteration  83: 11289332.663 ns/op
+Iteration  84: 11259743.573 ns/op
+Iteration  85: 11307067.416 ns/op
+Iteration  86: 11351357.955 ns/op
+Iteration  87: 11394179.750 ns/op
+Iteration  88: 11177966.700 ns/op
+Iteration  89: 11278359.764 ns/op
+Iteration  90: 11287088.270 ns/op
+Iteration  91: 11255162.910 ns/op
+Iteration  92: 11255216.551 ns/op
+Iteration  93: 11360553.258 ns/op
+Iteration  94: 11397950.886 ns/op
+Iteration  95: 11368544.685 ns/op
+Iteration  96: 11259875.506 ns/op
+Iteration  97: 11193757.200 ns/op
+Iteration  98: 11244359.809 ns/op
+Iteration  99: 11301788.315 ns/op
+Iteration 100: 11303477.966 ns/op
+
+
+Result "forEachComplexConvert":
+  11306389.001 ±(99.9%) 61637.238 ns/op [Average]
+  (min, avg, max) = (11124032.867, 11306389.001, 12748959.861), stdev = 181738.800
+  CI (99.9%): [11244751.763, 11368026.239] (assumes normal distribution)
+
+
+# JMH 1.13 (released 23 days ago)
+# VM version: JDK 1.8.0_91, VM 25.91-b14
+# VM invoker: /usr/lib/jvm/java-8-oracle/jre/bin/java
+# VM options: -Didea.launcher.port=7533 -Didea.launcher.bin.path=/media/fastdata/programs/idea-IC-145.1617.8/bin -Dfile.encoding=UTF-8
+# Warmup: 25 iterations, 1 s each
+# Measurement: 100 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.espressoprogrammer.foodscomposition.jmh.KCalConvertor.forEachConvert
+
+# Run progress: 28.57% complete, ETA 00:10:29
+# Fork: 1 of 1
+# Warmup Iteration   1: log4j: reset attribute= "false".
+log4j: Threshold ="null".
+log4j: Level value for root is  [INFO].
+log4j: root level set to INFO
+log4j: Class name: [org.apache.log4j.ConsoleAppender]
+log4j: Parsing layout of class: "org.apache.log4j.PatternLayout"
+log4j: Setting property [conversionPattern] to [%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n].
+log4j: Adding appender named [console] to category [root].
+2016-08-15 10:51:59 INFO  StreamAbbrevParser:23 - Parsing /sr28abbr/ABBREV.txt file
+148220.038 ns/op
+# Warmup Iteration   2: 138731.791 ns/op
+# Warmup Iteration   3: 137224.884 ns/op
+# Warmup Iteration   4: 137355.551 ns/op
+# Warmup Iteration   5: 135674.449 ns/op
+# Warmup Iteration   6: 135528.893 ns/op
+# Warmup Iteration   7: 137195.729 ns/op
+# Warmup Iteration   8: 137938.251 ns/op
+# Warmup Iteration   9: 136467.784 ns/op
+# Warmup Iteration  10: 136795.805 ns/op
+# Warmup Iteration  11: 135208.386 ns/op
+# Warmup Iteration  12: 135253.778 ns/op
+# Warmup Iteration  13: 134923.621 ns/op
+# Warmup Iteration  14: 136580.904 ns/op
+# Warmup Iteration  15: 135672.081 ns/op
+# Warmup Iteration  16: 149820.661 ns/op
+# Warmup Iteration  17: 185189.496 ns/op
+# Warmup Iteration  18: 181727.186 ns/op
+# Warmup Iteration  19: 183105.682 ns/op
+# Warmup Iteration  20: 181986.852 ns/op
+# Warmup Iteration  21: 185293.405 ns/op
+# Warmup Iteration  22: 182804.434 ns/op
+# Warmup Iteration  23: 182047.358 ns/op
+# Warmup Iteration  24: 182144.046 ns/op
+# Warmup Iteration  25: 183162.031 ns/op
+Iteration   1: 184190.812 ns/op
+Iteration   2: 183106.012 ns/op
+Iteration   3: 181271.809 ns/op
+Iteration   4: 183181.123 ns/op
+Iteration   5: 183189.338 ns/op
+Iteration   6: 183433.041 ns/op
+Iteration   7: 182593.110 ns/op
+Iteration   8: 183516.934 ns/op
+Iteration   9: 184239.223 ns/op
+Iteration  10: 181373.312 ns/op
+Iteration  11: 182152.021 ns/op
+Iteration  12: 184364.150 ns/op
+Iteration  13: 185495.653 ns/op
+Iteration  14: 186494.352 ns/op
+Iteration  15: 182106.229 ns/op
+Iteration  16: 184599.422 ns/op
+Iteration  17: 184562.543 ns/op
+Iteration  18: 182660.017 ns/op
+Iteration  19: 181839.758 ns/op
+Iteration  20: 183829.854 ns/op
+Iteration  21: 182539.348 ns/op
+Iteration  22: 183330.023 ns/op
+Iteration  23: 183074.537 ns/op
+Iteration  24: 184916.633 ns/op
+Iteration  25: 182846.492 ns/op
+Iteration  26: 184490.266 ns/op
+Iteration  27: 180843.181 ns/op
+Iteration  28: 183360.077 ns/op
+Iteration  29: 186362.919 ns/op
+Iteration  30: 184004.524 ns/op
+Iteration  31: 183696.413 ns/op
+Iteration  32: 183297.235 ns/op
+Iteration  33: 182076.666 ns/op
+Iteration  34: 182690.919 ns/op
+Iteration  35: 180909.537 ns/op
+Iteration  36: 183682.032 ns/op
+Iteration  37: 184846.424 ns/op
+Iteration  38: 183202.789 ns/op
+Iteration  39: 184124.312 ns/op
+Iteration  40: 185982.936 ns/op
+Iteration  41: 183576.582 ns/op
+Iteration  42: 183515.446 ns/op
+Iteration  43: 183917.668 ns/op
+Iteration  44: 183613.874 ns/op
+Iteration  45: 183957.889 ns/op
+Iteration  46: 181236.859 ns/op
+Iteration  47: 181912.293 ns/op
+Iteration  48: 182004.682 ns/op
+Iteration  49: 182740.352 ns/op
+Iteration  50: 183994.382 ns/op
+Iteration  51: 189553.197 ns/op
+Iteration  52: 182557.458 ns/op
+Iteration  53: 185838.119 ns/op
+Iteration  54: 185658.033 ns/op
+Iteration  55: 183225.941 ns/op
+Iteration  56: 187066.498 ns/op
+Iteration  57: 188624.587 ns/op
+Iteration  58: 190837.677 ns/op
+Iteration  59: 195179.340 ns/op
+Iteration  60: 190755.347 ns/op
+Iteration  61: 181512.853 ns/op
+Iteration  62: 185400.271 ns/op
+Iteration  63: 182454.204 ns/op
+Iteration  64: 185825.269 ns/op
+Iteration  65: 188493.839 ns/op
+Iteration  66: 194821.335 ns/op
+Iteration  67: 183462.595 ns/op
+Iteration  68: 184323.857 ns/op
+Iteration  69: 185802.615 ns/op
+Iteration  70: 183440.431 ns/op
+Iteration  71: 189314.250 ns/op
+Iteration  72: 188045.597 ns/op
+Iteration  73: 183914.672 ns/op
+Iteration  74: 191902.047 ns/op
+Iteration  75: 191288.085 ns/op
+Iteration  76: 185762.582 ns/op
+Iteration  77: 185772.257 ns/op
+Iteration  78: 184623.868 ns/op
+Iteration  79: 191393.992 ns/op
+Iteration  80: 186542.941 ns/op
+Iteration  81: 185946.008 ns/op
+Iteration  82: 187069.193 ns/op
+Iteration  83: 185763.812 ns/op
+Iteration  84: 183730.913 ns/op
+Iteration  85: 182889.236 ns/op
+Iteration  86: 183457.084 ns/op
+Iteration  87: 181653.730 ns/op
+Iteration  88: 183991.515 ns/op
+Iteration  89: 184428.772 ns/op
+Iteration  90: 181535.321 ns/op
+Iteration  91: 188723.738 ns/op
+Iteration  92: 188641.711 ns/op
+Iteration  93: 187339.326 ns/op
+Iteration  94: 187515.470 ns/op
+Iteration  95: 185278.752 ns/op
+Iteration  96: 185065.412 ns/op
+Iteration  97: 188335.972 ns/op
+Iteration  98: 189448.839 ns/op
+Iteration  99: 185387.510 ns/op
+Iteration 100: 186817.990 ns/op
+
+
+Result "forEachConvert":
+  184953.601 ±(99.9%) 988.417 ns/op [Average]
+  (min, avg, max) = (180843.181, 184953.601, 195179.340), stdev = 2914.371
+  CI (99.9%): [183965.183, 185942.018] (assumes normal distribution)
+
+
+# JMH 1.13 (released 23 days ago)
+# VM version: JDK 1.8.0_91, VM 25.91-b14
+# VM invoker: /usr/lib/jvm/java-8-oracle/jre/bin/java
+# VM options: -Didea.launcher.port=7533 -Didea.launcher.bin.path=/media/fastdata/programs/idea-IC-145.1617.8/bin -Dfile.encoding=UTF-8
+# Warmup: 25 iterations, 1 s each
+# Measurement: 100 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.espressoprogrammer.foodscomposition.jmh.KCalConvertor.parallelStreamComplexConvert
+
+# Run progress: 42.86% complete, ETA 00:08:23
+# Fork: 1 of 1
+# Warmup Iteration   1: log4j: reset attribute= "false".
+log4j: Threshold ="null".
+log4j: Level value for root is  [INFO].
+log4j: root level set to INFO
+log4j: Class name: [org.apache.log4j.ConsoleAppender]
+log4j: Parsing layout of class: "org.apache.log4j.PatternLayout"
+log4j: Setting property [conversionPattern] to [%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n].
+log4j: Adding appender named [console] to category [root].
+2016-08-15 10:54:04 INFO  StreamAbbrevParser:23 - Parsing /sr28abbr/ABBREV.txt file
+6543746.752 ns/op
+# Warmup Iteration   2: 4320695.060 ns/op
+# Warmup Iteration   3: 3965342.834 ns/op
+# Warmup Iteration   4: 3841068.065 ns/op
+# Warmup Iteration   5: 3768547.338 ns/op
+# Warmup Iteration   6: 3807318.281 ns/op
+# Warmup Iteration   7: 3800766.883 ns/op
+# Warmup Iteration   8: 3748967.337 ns/op
+# Warmup Iteration   9: 3740075.317 ns/op
+# Warmup Iteration  10: 4211896.836 ns/op
+# Warmup Iteration  11: 3829932.641 ns/op
+# Warmup Iteration  12: 3786230.657 ns/op
+# Warmup Iteration  13: 4447804.484 ns/op
+# Warmup Iteration  14: 4574016.671 ns/op
+# Warmup Iteration  15: 3881620.376 ns/op
+# Warmup Iteration  16: 4085480.486 ns/op
+# Warmup Iteration  17: 4791922.952 ns/op
+# Warmup Iteration  18: 4407765.692 ns/op
+# Warmup Iteration  19: 3779110.453 ns/op
+# Warmup Iteration  20: 3966440.233 ns/op
+# Warmup Iteration  21: 4139196.756 ns/op
+# Warmup Iteration  22: 3786576.913 ns/op
+# Warmup Iteration  23: 3708659.504 ns/op
+# Warmup Iteration  24: 3687913.596 ns/op
+# Warmup Iteration  25: 3692457.026 ns/op
+Iteration   1: 3736470.478 ns/op
+Iteration   2: 3720583.030 ns/op
+Iteration   3: 3891463.560 ns/op
+Iteration   4: 4363819.743 ns/op
+Iteration   5: 3982059.234 ns/op
+Iteration   6: 4296502.601 ns/op
+Iteration   7: 4057413.757 ns/op
+Iteration   8: 4262115.494 ns/op
+Iteration   9: 3910790.961 ns/op
+Iteration  10: 3795210.155 ns/op
+Iteration  11: 4032989.919 ns/op
+Iteration  12: 3707759.874 ns/op
+Iteration  13: 4010970.988 ns/op
+Iteration  14: 3960027.897 ns/op
+Iteration  15: 4004664.928 ns/op
+Iteration  16: 3969595.714 ns/op
+Iteration  17: 4002648.468 ns/op
+Iteration  18: 3922934.617 ns/op
+Iteration  19: 3808361.144 ns/op
+Iteration  20: 4020055.176 ns/op
+Iteration  21: 3962097.597 ns/op
+Iteration  22: 3828234.519 ns/op
+Iteration  23: 3831173.011 ns/op
+Iteration  24: 3978065.595 ns/op
+Iteration  25: 4468424.460 ns/op
+Iteration  26: 3964438.787 ns/op
+Iteration  27: 4368331.306 ns/op
+Iteration  28: 3794572.785 ns/op
+Iteration  29: 3738593.836 ns/op
+Iteration  30: 3695974.491 ns/op
+Iteration  31: 3686975.125 ns/op
+Iteration  32: 4033748.347 ns/op
+Iteration  33: 3910122.188 ns/op
+Iteration  34: 3771408.812 ns/op
+Iteration  35: 3694701.930 ns/op
+Iteration  36: 3886566.791 ns/op
+Iteration  37: 3837337.824 ns/op
+Iteration  38: 4030473.418 ns/op
+Iteration  39: 3769247.496 ns/op
+Iteration  40: 3938706.953 ns/op
+Iteration  41: 4611200.871 ns/op
+Iteration  42: 3791399.553 ns/op
+Iteration  43: 3766409.256 ns/op
+Iteration  44: 3675175.223 ns/op
+Iteration  45: 3783097.585 ns/op
+Iteration  46: 3797782.417 ns/op
+Iteration  47: 3786636.932 ns/op
+Iteration  48: 3958726.743 ns/op
+Iteration  49: 3902220.339 ns/op
+Iteration  50: 3797820.920 ns/op
+Iteration  51: 3883674.457 ns/op
+Iteration  52: 3723368.959 ns/op
+Iteration  53: 3694607.649 ns/op
+Iteration  54: 3687352.349 ns/op
+Iteration  55: 3683257.596 ns/op
+Iteration  56: 3767520.466 ns/op
+Iteration  57: 3782839.177 ns/op
+Iteration  58: 3883828.403 ns/op
+Iteration  59: 3938367.134 ns/op
+Iteration  60: 3724671.346 ns/op
+Iteration  61: 3961456.565 ns/op
+Iteration  62: 3832022.138 ns/op
+Iteration  63: 3805881.951 ns/op
+Iteration  64: 3913618.813 ns/op
+Iteration  65: 3870747.402 ns/op
+Iteration  66: 3772558.034 ns/op
+Iteration  67: 3894597.132 ns/op
+Iteration  68: 4207267.920 ns/op
+Iteration  69: 3857482.253 ns/op
+Iteration  70: 4028767.863 ns/op
+Iteration  71: 4143757.851 ns/op
+Iteration  72: 3961249.300 ns/op
+Iteration  73: 3818631.481 ns/op
+Iteration  74: 3821144.145 ns/op
+Iteration  75: 3869636.927 ns/op
+Iteration  76: 3929854.533 ns/op
+Iteration  77: 3896088.366 ns/op
+Iteration  78: 3761937.440 ns/op
+Iteration  79: 3926549.690 ns/op
+Iteration  80: 3726961.900 ns/op
+Iteration  81: 3943895.937 ns/op
+Iteration  82: 4192825.385 ns/op
+Iteration  83: 4299966.876 ns/op
+Iteration  84: 3897789.039 ns/op
+Iteration  85: 3793626.045 ns/op
+Iteration  86: 3765200.752 ns/op
+Iteration  87: 3955196.190 ns/op
+Iteration  88: 3798928.288 ns/op
+Iteration  89: 3814143.696 ns/op
+Iteration  90: 3785303.875 ns/op
+Iteration  91: 3708873.204 ns/op
+Iteration  92: 3980231.468 ns/op
+Iteration  93: 3772321.331 ns/op
+Iteration  94: 3863998.081 ns/op
+Iteration  95: 3768834.372 ns/op
+Iteration  96: 3961402.130 ns/op
+Iteration  97: 4061877.923 ns/op
+Iteration  98: 3745880.731 ns/op
+Iteration  99: 3961607.067 ns/op
+Iteration 100: 3846584.295 ns/op
+
+
+Result "parallelStreamComplexConvert":
+  3902042.888 ±(99.9%) 60230.745 ns/op [Average]
+  (min, avg, max) = (3675175.223, 3902042.888, 4611200.871), stdev = 177591.725
+  CI (99.9%): [3841812.142, 3962273.633] (assumes normal distribution)
+
+
+# JMH 1.13 (released 23 days ago)
+# VM version: JDK 1.8.0_91, VM 25.91-b14
+# VM invoker: /usr/lib/jvm/java-8-oracle/jre/bin/java
+# VM options: -Didea.launcher.port=7533 -Didea.launcher.bin.path=/media/fastdata/programs/idea-IC-145.1617.8/bin -Dfile.encoding=UTF-8
+# Warmup: 25 iterations, 1 s each
+# Measurement: 100 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.espressoprogrammer.foodscomposition.jmh.KCalConvertor.parallelStreamConvert
+
+# Run progress: 57.14% complete, ETA 00:06:17
+# Fork: 1 of 1
+# Warmup Iteration   1: log4j: reset attribute= "false".
+log4j: Threshold ="null".
+log4j: Level value for root is  [INFO].
+log4j: root level set to INFO
+log4j: Class name: [org.apache.log4j.ConsoleAppender]
+log4j: Parsing layout of class: "org.apache.log4j.PatternLayout"
+log4j: Setting property [conversionPattern] to [%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n].
+log4j: Adding appender named [console] to category [root].
+2016-08-15 10:56:10 INFO  StreamAbbrevParser:23 - Parsing /sr28abbr/ABBREV.txt file
+181504.554 ns/op
+# Warmup Iteration   2: 158295.856 ns/op
+# Warmup Iteration   3: 157132.333 ns/op
+# Warmup Iteration   4: 165877.348 ns/op
+# Warmup Iteration   5: 166691.053 ns/op
+# Warmup Iteration   6: 163917.091 ns/op
+# Warmup Iteration   7: 162780.148 ns/op
+# Warmup Iteration   8: 161693.722 ns/op
+# Warmup Iteration   9: 163774.991 ns/op
+# Warmup Iteration  10: 169145.691 ns/op
+# Warmup Iteration  11: 171269.922 ns/op
+# Warmup Iteration  12: 166819.932 ns/op
+# Warmup Iteration  13: 174401.056 ns/op
+# Warmup Iteration  14: 160754.263 ns/op
+# Warmup Iteration  15: 165696.021 ns/op
+# Warmup Iteration  16: 170557.012 ns/op
+# Warmup Iteration  17: 166917.814 ns/op
+# Warmup Iteration  18: 165886.314 ns/op
+# Warmup Iteration  19: 160969.686 ns/op
+# Warmup Iteration  20: 165577.041 ns/op
+# Warmup Iteration  21: 170310.861 ns/op
+# Warmup Iteration  22: 170750.643 ns/op
+# Warmup Iteration  23: 162496.537 ns/op
+# Warmup Iteration  24: 161511.007 ns/op
+# Warmup Iteration  25: 166572.051 ns/op
+Iteration   1: 165275.810 ns/op
+Iteration   2: 162359.470 ns/op
+Iteration   3: 169466.198 ns/op
+Iteration   4: 175705.716 ns/op
+Iteration   5: 166055.612 ns/op
+Iteration   6: 178748.538 ns/op
+Iteration   7: 164705.774 ns/op
+Iteration   8: 163658.083 ns/op
+Iteration   9: 178827.512 ns/op
+Iteration  10: 166379.902 ns/op
+Iteration  11: 164929.848 ns/op
+Iteration  12: 164548.486 ns/op
+Iteration  13: 164552.678 ns/op
+Iteration  14: 177214.682 ns/op
+Iteration  15: 173617.615 ns/op
+Iteration  16: 166797.516 ns/op
+Iteration  17: 174568.425 ns/op
+Iteration  18: 165367.628 ns/op
+Iteration  19: 163585.821 ns/op
+Iteration  20: 166755.128 ns/op
+Iteration  21: 164121.791 ns/op
+Iteration  22: 171246.670 ns/op
+Iteration  23: 168628.882 ns/op
+Iteration  24: 160731.147 ns/op
+Iteration  25: 163675.100 ns/op
+Iteration  26: 171261.740 ns/op
+Iteration  27: 160850.593 ns/op
+Iteration  28: 167846.697 ns/op
+Iteration  29: 163587.061 ns/op
+Iteration  30: 162050.650 ns/op
+Iteration  31: 165642.557 ns/op
+Iteration  32: 160952.546 ns/op
+Iteration  33: 169147.966 ns/op
+Iteration  34: 163733.028 ns/op
+Iteration  35: 162333.345 ns/op
+Iteration  36: 160431.165 ns/op
+Iteration  37: 166476.319 ns/op
+Iteration  38: 159553.099 ns/op
+Iteration  39: 170140.538 ns/op
+Iteration  40: 163999.123 ns/op
+Iteration  41: 160901.281 ns/op
+Iteration  42: 169120.568 ns/op
+Iteration  43: 162846.014 ns/op
+Iteration  44: 165225.512 ns/op
+Iteration  45: 176214.403 ns/op
+Iteration  46: 164125.761 ns/op
+Iteration  47: 164785.650 ns/op
+Iteration  48: 164088.980 ns/op
+Iteration  49: 168012.839 ns/op
+Iteration  50: 164744.236 ns/op
+Iteration  51: 160933.197 ns/op
+Iteration  52: 163216.278 ns/op
+Iteration  53: 172528.552 ns/op
+Iteration  54: 164967.141 ns/op
+Iteration  55: 175964.083 ns/op
+Iteration  56: 167115.186 ns/op
+Iteration  57: 166888.983 ns/op
+Iteration  58: 170762.900 ns/op
+Iteration  59: 173671.116 ns/op
+Iteration  60: 170471.345 ns/op
+Iteration  61: 179568.300 ns/op
+Iteration  62: 167305.864 ns/op
+Iteration  63: 160260.415 ns/op
+Iteration  64: 167422.956 ns/op
+Iteration  65: 169045.336 ns/op
+Iteration  66: 161801.703 ns/op
+Iteration  67: 172531.048 ns/op
+Iteration  68: 166050.498 ns/op
+Iteration  69: 173719.192 ns/op
+Iteration  70: 169766.146 ns/op
+Iteration  71: 162260.861 ns/op
+Iteration  72: 172025.274 ns/op
+Iteration  73: 161074.883 ns/op
+Iteration  74: 162400.546 ns/op
+Iteration  75: 159862.387 ns/op
+Iteration  76: 159370.371 ns/op
+Iteration  77: 162385.024 ns/op
+Iteration  78: 168809.053 ns/op
+Iteration  79: 170241.484 ns/op
+Iteration  80: 165340.553 ns/op
+Iteration  81: 169152.687 ns/op
+Iteration  82: 166980.783 ns/op
+Iteration  83: 165077.232 ns/op
+Iteration  84: 168437.841 ns/op
+Iteration  85: 173512.468 ns/op
+Iteration  86: 169427.827 ns/op
+Iteration  87: 192266.065 ns/op
+Iteration  88: 169156.699 ns/op
+Iteration  89: 191773.033 ns/op
+Iteration  90: 169858.270 ns/op
+Iteration  91: 162882.330 ns/op
+Iteration  92: 171578.990 ns/op
+Iteration  93: 173859.344 ns/op
+Iteration  94: 163281.154 ns/op
+Iteration  95: 170318.406 ns/op
+Iteration  96: 166497.070 ns/op
+Iteration  97: 164014.401 ns/op
+Iteration  98: 170285.517 ns/op
+Iteration  99: 168331.322 ns/op
+Iteration 100: 172000.731 ns/op
+
+
+Result "parallelStreamConvert":
+  167660.485 ±(99.9%) 1993.920 ns/op [Average]
+  (min, avg, max) = (159370.371, 167660.485, 192266.065), stdev = 5879.118
+  CI (99.9%): [165666.566, 169654.405] (assumes normal distribution)
+
+
+# JMH 1.13 (released 23 days ago)
+# VM version: JDK 1.8.0_91, VM 25.91-b14
+# VM invoker: /usr/lib/jvm/java-8-oracle/jre/bin/java
+# VM options: -Didea.launcher.port=7533 -Didea.launcher.bin.path=/media/fastdata/programs/idea-IC-145.1617.8/bin -Dfile.encoding=UTF-8
+# Warmup: 25 iterations, 1 s each
+# Measurement: 100 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.espressoprogrammer.foodscomposition.jmh.KCalConvertor.sequentialStreamComplexConvert
+
+# Run progress: 71.43% complete, ETA 00:04:11
+# Fork: 1 of 1
+# Warmup Iteration   1: log4j: reset attribute= "false".
+log4j: Threshold ="null".
+log4j: Level value for root is  [INFO].
+log4j: root level set to INFO
+log4j: Class name: [org.apache.log4j.ConsoleAppender]
+log4j: Parsing layout of class: "org.apache.log4j.PatternLayout"
+log4j: Setting property [conversionPattern] to [%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n].
+log4j: Adding appender named [console] to category [root].
+2016-08-15 10:58:16 INFO  StreamAbbrevParser:23 - Parsing /sr28abbr/ABBREV.txt file
+17916101.875 ns/op
+# Warmup Iteration   2: 12164047.446 ns/op
+# Warmup Iteration   3: 11884533.800 ns/op
+# Warmup Iteration   4: 12014030.333 ns/op
+# Warmup Iteration   5: 11821070.306 ns/op
+# Warmup Iteration   6: 11850503.941 ns/op
+# Warmup Iteration   7: 12078226.952 ns/op
+# Warmup Iteration   8: 11938194.476 ns/op
+# Warmup Iteration   9: 11892205.165 ns/op
+# Warmup Iteration  10: 11982913.024 ns/op
+# Warmup Iteration  11: 12050203.012 ns/op
+# Warmup Iteration  12: 12108762.434 ns/op
+# Warmup Iteration  13: 12445174.383 ns/op
+# Warmup Iteration  14: 12263904.329 ns/op
+# Warmup Iteration  15: 11879817.494 ns/op
+# Warmup Iteration  16: 12098469.578 ns/op
+# Warmup Iteration  17: 11697850.756 ns/op
+# Warmup Iteration  18: 11687932.372 ns/op
+# Warmup Iteration  19: 12160590.880 ns/op
+# Warmup Iteration  20: 12116392.277 ns/op
+# Warmup Iteration  21: 11877986.306 ns/op
+# Warmup Iteration  22: 12427244.099 ns/op
+# Warmup Iteration  23: 12172299.952 ns/op
+# Warmup Iteration  24: 11692095.012 ns/op
+# Warmup Iteration  25: 11540683.954 ns/op
+Iteration   1: 11583264.414 ns/op
+Iteration   2: 11739417.558 ns/op
+Iteration   3: 11713358.616 ns/op
+Iteration   4: 11972947.155 ns/op
+Iteration   5: 11664353.814 ns/op
+Iteration   6: 12044421.774 ns/op
+Iteration   7: 12371013.469 ns/op
+Iteration   8: 11944953.048 ns/op
+Iteration   9: 12223968.402 ns/op
+Iteration  10: 11557448.345 ns/op
+Iteration  11: 11603829.931 ns/op
+Iteration  12: 11530367.356 ns/op
+Iteration  13: 11935231.738 ns/op
+Iteration  14: 11728083.384 ns/op
+Iteration  15: 11821710.012 ns/op
+Iteration  16: 11708177.930 ns/op
+Iteration  17: 11737573.791 ns/op
+Iteration  18: 11738520.349 ns/op
+Iteration  19: 12316759.866 ns/op
+Iteration  20: 12281501.659 ns/op
+Iteration  21: 12539146.913 ns/op
+Iteration  22: 12534084.050 ns/op
+Iteration  23: 12429885.284 ns/op
+Iteration  24: 12129110.361 ns/op
+Iteration  25: 11983867.131 ns/op
+Iteration  26: 11806532.212 ns/op
+Iteration  27: 11646874.116 ns/op
+Iteration  28: 12225843.902 ns/op
+Iteration  29: 11836604.906 ns/op
+Iteration  30: 11763886.616 ns/op
+Iteration  31: 12147885.398 ns/op
+Iteration  32: 12269447.524 ns/op
+Iteration  33: 12447464.111 ns/op
+Iteration  34: 12142379.964 ns/op
+Iteration  35: 12421245.469 ns/op
+Iteration  36: 12452083.444 ns/op
+Iteration  37: 12039396.560 ns/op
+Iteration  38: 11502980.747 ns/op
+Iteration  39: 11521482.172 ns/op
+Iteration  40: 11516483.632 ns/op
+Iteration  41: 11716046.488 ns/op
+Iteration  42: 11664828.849 ns/op
+Iteration  43: 12174472.120 ns/op
+Iteration  44: 12191831.000 ns/op
+Iteration  45: 12516710.675 ns/op
+Iteration  46: 12939548.590 ns/op
+Iteration  47: 12070304.494 ns/op
+Iteration  48: 12118821.422 ns/op
+Iteration  49: 11975366.702 ns/op
+Iteration  50: 11770508.565 ns/op
+Iteration  51: 12610411.950 ns/op
+Iteration  52: 12125700.578 ns/op
+Iteration  53: 12271226.317 ns/op
+Iteration  54: 12125961.120 ns/op
+Iteration  55: 12068796.145 ns/op
+Iteration  56: 12230504.561 ns/op
+Iteration  57: 12130069.747 ns/op
+Iteration  58: 12083306.795 ns/op
+Iteration  59: 12199850.085 ns/op
+Iteration  60: 12560681.950 ns/op
+Iteration  61: 12107262.699 ns/op
+Iteration  62: 11550222.368 ns/op
+Iteration  63: 11595574.138 ns/op
+Iteration  64: 11538523.621 ns/op
+Iteration  65: 11523063.448 ns/op
+Iteration  66: 11492470.114 ns/op
+Iteration  67: 11479436.591 ns/op
+Iteration  68: 11715079.372 ns/op
+Iteration  69: 11756820.779 ns/op
+Iteration  70: 11506516.437 ns/op
+Iteration  71: 12198760.651 ns/op
+Iteration  72: 12075743.524 ns/op
+Iteration  73: 11832188.212 ns/op
+Iteration  74: 12160436.422 ns/op
+Iteration  75: 11706965.593 ns/op
+Iteration  76: 11562428.575 ns/op
+Iteration  77: 11658693.477 ns/op
+Iteration  78: 12066143.289 ns/op
+Iteration  79: 11866531.318 ns/op
+Iteration  80: 11997351.607 ns/op
+Iteration  81: 12335966.317 ns/op
+Iteration  82: 12271473.793 ns/op
+Iteration  83: 12035098.155 ns/op
+Iteration  84: 12005512.905 ns/op
+Iteration  85: 12125924.952 ns/op
+Iteration  86: 12417464.802 ns/op
+Iteration  87: 13059589.506 ns/op
+Iteration  88: 13559082.486 ns/op
+Iteration  89: 12804854.684 ns/op
+Iteration  90: 12732319.241 ns/op
+Iteration  91: 12624365.238 ns/op
+Iteration  92: 12157471.771 ns/op
+Iteration  93: 12016509.262 ns/op
+Iteration  94: 11923357.452 ns/op
+Iteration  95: 11826188.482 ns/op
+Iteration  96: 12121239.301 ns/op
+Iteration  97: 12081936.145 ns/op
+Iteration  98: 11945542.738 ns/op
+Iteration  99: 12021808.619 ns/op
+Iteration 100: 11813543.835 ns/op
+
+
+Result "sequentialStreamComplexConvert":
+  12033879.972 ±(99.9%) 129120.560 ns/op [Average]
+  (min, avg, max) = (11479436.591, 12033879.972, 13559082.486), stdev = 380714.912
+  CI (99.9%): [11904759.412, 12163000.532] (assumes normal distribution)
+
+
+# JMH 1.13 (released 23 days ago)
+# VM version: JDK 1.8.0_91, VM 25.91-b14
+# VM invoker: /usr/lib/jvm/java-8-oracle/jre/bin/java
+# VM options: -Didea.launcher.port=7533 -Didea.launcher.bin.path=/media/fastdata/programs/idea-IC-145.1617.8/bin -Dfile.encoding=UTF-8
+# Warmup: 25 iterations, 1 s each
+# Measurement: 100 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.espressoprogrammer.foodscomposition.jmh.KCalConvertor.sequentialStreamConvert
+
+# Run progress: 85.71% complete, ETA 00:02:05
+# Fork: 1 of 1
+# Warmup Iteration   1: log4j: reset attribute= "false".
+log4j: Threshold ="null".
+log4j: Level value for root is  [INFO].
+log4j: root level set to INFO
+log4j: Class name: [org.apache.log4j.ConsoleAppender]
+log4j: Parsing layout of class: "org.apache.log4j.PatternLayout"
+log4j: Setting property [conversionPattern] to [%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n].
+log4j: Adding appender named [console] to category [root].
+2016-08-15 11:00:22 INFO  StreamAbbrevParser:23 - Parsing /sr28abbr/ABBREV.txt file
+218280.990 ns/op
+# Warmup Iteration   2: 203882.806 ns/op
+# Warmup Iteration   3: 193387.104 ns/op
+# Warmup Iteration   4: 192287.999 ns/op
+# Warmup Iteration   5: 192867.482 ns/op
+# Warmup Iteration   6: 195049.864 ns/op
+# Warmup Iteration   7: 196273.041 ns/op
+# Warmup Iteration   8: 194205.101 ns/op
+# Warmup Iteration   9: 195516.219 ns/op
+# Warmup Iteration  10: 192266.941 ns/op
+# Warmup Iteration  11: 193136.207 ns/op
+# Warmup Iteration  12: 192565.813 ns/op
+# Warmup Iteration  13: 199038.416 ns/op
+# Warmup Iteration  14: 198508.711 ns/op
+# Warmup Iteration  15: 199078.422 ns/op
+# Warmup Iteration  16: 194871.187 ns/op
+# Warmup Iteration  17: 212346.393 ns/op
+# Warmup Iteration  18: 206010.545 ns/op
+# Warmup Iteration  19: 207065.407 ns/op
+# Warmup Iteration  20: 205721.521 ns/op
+# Warmup Iteration  21: 205422.943 ns/op
+# Warmup Iteration  22: 208544.302 ns/op
+# Warmup Iteration  23: 197737.702 ns/op
+# Warmup Iteration  24: 192069.973 ns/op
+# Warmup Iteration  25: 196553.362 ns/op
+Iteration   1: 196485.104 ns/op
+Iteration   2: 193625.239 ns/op
+Iteration   3: 191591.338 ns/op
+Iteration   4: 201229.795 ns/op
+Iteration   5: 206875.150 ns/op
+Iteration   6: 215960.199 ns/op
+Iteration   7: 215701.233 ns/op
+Iteration   8: 202618.579 ns/op
+Iteration   9: 188077.634 ns/op
+Iteration  10: 188746.304 ns/op
+Iteration  11: 191031.930 ns/op
+Iteration  12: 184330.884 ns/op
+Iteration  13: 188454.167 ns/op
+Iteration  14: 185650.174 ns/op
+Iteration  15: 186264.645 ns/op
+Iteration  16: 186582.729 ns/op
+Iteration  17: 187914.228 ns/op
+Iteration  18: 191643.685 ns/op
+Iteration  19: 208770.310 ns/op
+Iteration  20: 206548.106 ns/op
+Iteration  21: 209815.128 ns/op
+Iteration  22: 214070.548 ns/op
+Iteration  23: 189463.204 ns/op
+Iteration  24: 188031.791 ns/op
+Iteration  25: 186274.078 ns/op
+Iteration  26: 187635.641 ns/op
+Iteration  27: 190738.613 ns/op
+Iteration  28: 185905.522 ns/op
+Iteration  29: 191739.950 ns/op
+Iteration  30: 185008.876 ns/op
+Iteration  31: 188870.307 ns/op
+Iteration  32: 189217.370 ns/op
+Iteration  33: 183564.570 ns/op
+Iteration  34: 184420.936 ns/op
+Iteration  35: 185557.855 ns/op
+Iteration  36: 197449.259 ns/op
+Iteration  37: 197191.416 ns/op
+Iteration  38: 185678.835 ns/op
+Iteration  39: 182874.838 ns/op
+Iteration  40: 188284.039 ns/op
+Iteration  41: 195283.184 ns/op
+Iteration  42: 208084.569 ns/op
+Iteration  43: 204048.277 ns/op
+Iteration  44: 202024.375 ns/op
+Iteration  45: 189867.178 ns/op
+Iteration  46: 186650.682 ns/op
+Iteration  47: 189755.854 ns/op
+Iteration  48: 190581.648 ns/op
+Iteration  49: 186648.429 ns/op
+Iteration  50: 185746.191 ns/op
+Iteration  51: 185091.517 ns/op
+Iteration  52: 183921.423 ns/op
+Iteration  53: 185128.537 ns/op
+Iteration  54: 185850.395 ns/op
+Iteration  55: 183867.290 ns/op
+Iteration  56: 185532.697 ns/op
+Iteration  57: 184580.537 ns/op
+Iteration  58: 184928.989 ns/op
+Iteration  59: 184706.563 ns/op
+Iteration  60: 183608.167 ns/op
+Iteration  61: 182975.133 ns/op
+Iteration  62: 183098.921 ns/op
+Iteration  63: 183655.041 ns/op
+Iteration  64: 182743.788 ns/op
+Iteration  65: 185439.045 ns/op
+Iteration  66: 183569.682 ns/op
+Iteration  67: 189896.571 ns/op
+Iteration  68: 185218.186 ns/op
+Iteration  69: 186298.154 ns/op
+Iteration  70: 190437.617 ns/op
+Iteration  71: 189542.337 ns/op
+Iteration  72: 185704.676 ns/op
+Iteration  73: 192629.297 ns/op
+Iteration  74: 205222.256 ns/op
+Iteration  75: 186704.363 ns/op
+Iteration  76: 187493.695 ns/op
+Iteration  77: 185427.100 ns/op
+Iteration  78: 194109.552 ns/op
+Iteration  79: 186178.815 ns/op
+Iteration  80: 191115.195 ns/op
+Iteration  81: 186867.925 ns/op
+Iteration  82: 183299.427 ns/op
+Iteration  83: 186986.265 ns/op
+Iteration  84: 195906.556 ns/op
+Iteration  85: 207774.965 ns/op
+Iteration  86: 189352.748 ns/op
+Iteration  87: 184489.479 ns/op
+Iteration  88: 183952.367 ns/op
+Iteration  89: 185391.692 ns/op
+Iteration  90: 185350.868 ns/op
+Iteration  91: 184149.074 ns/op
+Iteration  92: 181631.330 ns/op
+Iteration  93: 183435.750 ns/op
+Iteration  94: 182347.708 ns/op
+Iteration  95: 182448.882 ns/op
+Iteration  96: 184585.873 ns/op
+Iteration  97: 183805.592 ns/op
+Iteration  98: 183955.442 ns/op
+Iteration  99: 182768.819 ns/op
+Iteration 100: 181541.960 ns/op
+
+
+Result "sequentialStreamConvert":
+  189933.029 ±(99.9%) 2779.487 ns/op [Average]
+  (min, avg, max) = (181541.960, 189933.029, 215960.199), stdev = 8195.382
+  CI (99.9%): [187153.541, 192712.516] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:14:41
+
+Benchmark                                     Mode  Cnt         Score        Error  Units
+KCalConvertor.baseline                        avgt  100         0.324 ±      0.001  ns/op
+KCalConvertor.forEachComplexConvert           avgt  100  11306389.001 ±  61637.238  ns/op
+KCalConvertor.forEachConvert                  avgt  100    184953.601 ±    988.417  ns/op
+KCalConvertor.parallelStreamComplexConvert    avgt  100   3902042.888 ±  60230.745  ns/op
+KCalConvertor.parallelStreamConvert           avgt  100    167660.485 ±   1993.920  ns/op
+KCalConvertor.sequentialStreamComplexConvert  avgt  100  12033879.972 ± 129120.560  ns/op
+KCalConvertor.sequentialStreamConvert         avgt  100    189933.029 ±   2779.487  ns/op
+
+Process finished with exit code 0

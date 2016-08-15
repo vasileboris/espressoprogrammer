@@ -81,7 +81,7 @@ public class KCalConvertor {
         Options opt = new OptionsBuilder()
             .include(KCalConvertor.class.getSimpleName())
             .warmupIterations(25)
-            .measurementIterations(50)
+            .measurementIterations(100)
             .forks(1)
             .build();
 
