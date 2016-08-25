@@ -7,7 +7,7 @@ import java.util.function.Function;
 
 public class ForkJoinConvertor<T, R> extends RecursiveTask<List<R>> {
 
-    private static final int THRESHOLD = 1000;
+    private static final int THRESHOLD = 1;
 
     private final List<T> values;
     private final Function<T, R> map;

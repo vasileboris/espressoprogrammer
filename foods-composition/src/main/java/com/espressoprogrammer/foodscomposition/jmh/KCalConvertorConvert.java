@@ -4,7 +4,7 @@ import com.espressoprogrammer.foodscomposition.convertor.ForkJoinConvertor;
 import com.espressoprogrammer.foodscomposition.dto.Abbrev;
 import com.espressoprogrammer.foodscomposition.dto.AbbrevKcal;
 import com.espressoprogrammer.foodscomposition.dto.ConvertorKt;
-import com.espressoprogrammer.foodscomposition.parser.StreamAbbrevParser;
+import com.espressoprogrammer.foodscomposition.parser.BufferedReaderAbbrevParser;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
 import org.openjdk.jmh.runner.Runner;
@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 @State(Scope.Thread)
 public class KCalConvertorConvert {
 
-    List<Abbrev> abbrevs = new StreamAbbrevParser().parseFile("/sr28abbr/ABBREV.txt");
+    List<Abbrev> abbrevs = new BufferedReaderAbbrevParser().parseFile("/sr28abbr/ABBREV.txt");
 
     @Benchmark
     public void baseline() {
@@ -54,7 +54,7 @@ public class KCalConvertorConvert {
         blackhole.consume(abbrevKcals);
     }
 
-    //@Benchmark
+    @Benchmark
     public void forkJoinStream(Blackhole blackhole) {
         List<AbbrevKcal> abbrevKcals = new ForkJoinPool()
             .invoke(new ForkJoinConvertor<>(abbrevs, ConvertorKt::convert));
