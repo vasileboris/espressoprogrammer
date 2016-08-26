@@ -5,7 +5,6 @@ import com.espressoprogrammer.foodscomposition.dto.Abbrev;
 import com.espressoprogrammer.foodscomposition.dto.AbbrevKcal;
 import com.espressoprogrammer.foodscomposition.dto.ConvertorKt;
 import com.espressoprogrammer.foodscomposition.parser.BufferedReaderAbbrevParser;
-import com.espressoprogrammer.foodscomposition.parser.StreamAbbrevParser;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
 import org.openjdk.jmh.runner.Runner;
@@ -20,11 +19,19 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 @BenchmarkMode(Mode.AverageTime)
-@OutputTimeUnit(TimeUnit.NANOSECONDS)
+@OutputTimeUnit(TimeUnit.MILLISECONDS)
+@Warmup(iterations = 25)
+@Measurement(iterations = 100)
+@Fork(1)
 @State(Scope.Thread)
 public class KCalConvertorComplexConvert {
 
-    List<Abbrev> abbrevs = new BufferedReaderAbbrevParser().parseFile("/sr28abbr/ABBREV.txt");
+    List<Abbrev> abbrevs;
+
+    @Setup(value = Level.Trial)
+    public void setup() {
+        abbrevs = new BufferedReaderAbbrevParser().parseFile("/sr28abbr/ABBREV.txt");
+    }
 
     @Benchmark
     public void baseline() {
@@ -65,9 +72,6 @@ public class KCalConvertorComplexConvert {
     public static void main(String[] args) throws RunnerException {
         Options opt = new OptionsBuilder()
             .include(KCalConvertorComplexConvert.class.getSimpleName())
-            .warmupIterations(25)
-            .measurementIterations(100)
-            .forks(1)
             .build();
 
         new Runner(opt).run();

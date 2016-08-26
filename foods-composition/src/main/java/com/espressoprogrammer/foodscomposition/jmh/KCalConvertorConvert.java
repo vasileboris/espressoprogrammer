@@ -19,11 +19,19 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 @BenchmarkMode(Mode.AverageTime)
-@OutputTimeUnit(TimeUnit.NANOSECONDS)
+@OutputTimeUnit(TimeUnit.MILLISECONDS)
+@Warmup(iterations = 25)
+@Measurement(iterations = 100)
+@Fork(1)
 @State(Scope.Thread)
 public class KCalConvertorConvert {
 
-    List<Abbrev> abbrevs = new BufferedReaderAbbrevParser().parseFile("/sr28abbr/ABBREV.txt");
+    List<Abbrev> abbrevs;
+
+    @Setup(value = Level.Trial)
+    public void setup() {
+        abbrevs = new BufferedReaderAbbrevParser().parseFile("/sr28abbr/ABBREV.txt");
+    }
 
     @Benchmark
     public void baseline() {
@@ -64,9 +72,6 @@ public class KCalConvertorConvert {
     public static void main(String[] args) throws RunnerException {
         Options opt = new OptionsBuilder()
             .include(KCalConvertorConvert.class.getSimpleName())
-            .warmupIterations(25)
-            .measurementIterations(100)
-            .forks(1)
             .build();
 
         new Runner(opt).run();
