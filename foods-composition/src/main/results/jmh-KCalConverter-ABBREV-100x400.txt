@@ -1,4 +1,4 @@
-/usr/lib/jvm/java-8-oracle/bin/java -Didea.launcher.port=7532 -Didea.launcher.bin.path=/media/fastdata/programs/idea-IC-145.1617.8/bin -Dfile.encoding=UTF-8 -classpath /usr/lib/jvm/java-8-oracle/jre/lib/charsets.jar:/usr/lib/jvm/java-8-oracle/jre/lib/deploy.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/cldrdata.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/dnsns.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/jaccess.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/jfxrt.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/localedata.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/nashorn.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/sunec.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/sunjce_provider.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/sunpkcs11.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/zipfs.jar:/usr/lib/jvm/java-8-oracle/jre/lib/javaws.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jce.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jfr.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jfxswt.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jsse.jar:/usr/lib/jvm/java-8-oracle/jre/lib/management-agent.jar:/usr/lib/jvm/java-8-oracle/jre/lib/plugin.jar:/usr/lib/jvm/java-8-oracle/jre/lib/resources.jar:/usr/lib/jvm/java-8-oracle/jre/lib/rt.jar:/media/fastdata/work/espressoprogrammer-code/foods-composition/target/classes:/home/boris/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib/1.0.3/kotlin-stdlib-1.0.3.jar:/home/boris/.m2/repository/org/jetbrains/kotlin/kotlin-runtime/1.0.3/kotlin-runtime-1.0.3.jar:/home/boris/.m2/repository/log4j/log4j/1.2.17/log4j-1.2.17.jar:/home/boris/.m2/repository/org/slf4j/slf4j-log4j12/1.7.21/slf4j-log4j12-1.7.21.jar:/home/boris/.m2/repository/org/slf4j/slf4j-api/1.7.21/slf4j-api-1.7.21.jar:/home/boris/.m2/repository/org/openjdk/jmh/jmh-core/1.13/jmh-core-1.13.jar:/home/boris/.m2/repository/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6.jar:/home/boris/.m2/repository/org/apache/commons/commons-math3/3.2/commons-math3-3.2.jar:/media/fastdata/programs/idea-IC-145.1617.8/lib/idea_rt.jar com.intellij.rt.execution.application.AppMain com.espressoprogrammer.foodscomposition.jmh.KCalConvertor
+/usr/lib/jvm/java-8-oracle/bin/java -Didea.launcher.port=7532 -Didea.launcher.bin.path=/media/fastdata/programs/idea-IC-145.1617.8/bin -Dfile.encoding=UTF-8 -classpath /usr/lib/jvm/java-8-oracle/jre/lib/charsets.jar:/usr/lib/jvm/java-8-oracle/jre/lib/deploy.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/cldrdata.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/dnsns.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/jaccess.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/jfxrt.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/localedata.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/nashorn.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/sunec.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/sunjce_provider.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/sunpkcs11.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/zipfs.jar:/usr/lib/jvm/java-8-oracle/jre/lib/javaws.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jce.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jfr.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jfxswt.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jsse.jar:/usr/lib/jvm/java-8-oracle/jre/lib/management-agent.jar:/usr/lib/jvm/java-8-oracle/jre/lib/plugin.jar:/usr/lib/jvm/java-8-oracle/jre/lib/resources.jar:/usr/lib/jvm/java-8-oracle/jre/lib/rt.jar:/media/fastdata/work/espressoprogrammer-code/foods-composition/target/classes:/home/boris/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib/1.0.3/kotlin-stdlib-1.0.3.jar:/home/boris/.m2/repository/org/jetbrains/kotlin/kotlin-runtime/1.0.3/kotlin-runtime-1.0.3.jar:/home/boris/.m2/repository/log4j/log4j/1.2.17/log4j-1.2.17.jar:/home/boris/.m2/repository/org/slf4j/slf4j-log4j12/1.7.21/slf4j-log4j12-1.7.21.jar:/home/boris/.m2/repository/org/slf4j/slf4j-api/1.7.21/slf4j-api-1.7.21.jar:/home/boris/.m2/repository/org/openjdk/jmh/jmh-core/1.13/jmh-core-1.13.jar:/home/boris/.m2/repository/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6.jar:/home/boris/.m2/repository/org/apache/commons/commons-math3/3.2/commons-math3-3.2.jar:/media/fastdata/programs/idea-IC-145.1617.8/lib/idea_rt.jar com.intellij.rt.execution.application.AppMain com.espressoprogrammer.foodscomposition.jmh.KCalConverter
 # JMH 1.13 (released 23 days ago)
 # VM version: JDK 1.8.0_91, VM 25.91-b14
 # VM invoker: /usr/lib/jvm/java-8-oracle/jre/bin/java
@@ -8,7 +8,7 @@
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Average time, time/op
-# Benchmark: com.espressoprogrammer.foodscomposition.jmh.KCalConvertor.baseline
+# Benchmark: com.espressoprogrammer.foodscomposition.jmh.KCalConverter.baseline
 
 # Run progress: 0.00% complete, ETA 00:58:20
 # Fork: 1 of 1
@@ -538,7 +538,7 @@ Result "baseline":
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Average time, time/op
-# Benchmark: com.espressoprogrammer.foodscomposition.jmh.KCalConvertor.forEachComplexConvert
+# Benchmark: com.espressoprogrammer.foodscomposition.jmh.KCalConverter.forEachComplexConvert
 
 # Run progress: 14.29% complete, ETA 00:50:05
 # Fork: 1 of 1
@@ -1068,7 +1068,7 @@ Result "forEachComplexConvert":
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Average time, time/op
-# Benchmark: com.espressoprogrammer.foodscomposition.jmh.KCalConvertor.forEachConvert
+# Benchmark: com.espressoprogrammer.foodscomposition.jmh.KCalConverter.forEachConvert
 
 # Run progress: 28.57% complete, ETA 00:41:51
 # Fork: 1 of 1
@@ -1598,7 +1598,7 @@ Result "forEachConvert":
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Average time, time/op
-# Benchmark: com.espressoprogrammer.foodscomposition.jmh.KCalConvertor.parallelStreamComplexConvert
+# Benchmark: com.espressoprogrammer.foodscomposition.jmh.KCalConverter.parallelStreamComplexConvert
 
 # Run progress: 42.86% complete, ETA 00:33:27
 # Fork: 1 of 1
@@ -2128,7 +2128,7 @@ Result "parallelStreamComplexConvert":
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Average time, time/op
-# Benchmark: com.espressoprogrammer.foodscomposition.jmh.KCalConvertor.parallelStreamConvert
+# Benchmark: com.espressoprogrammer.foodscomposition.jmh.KCalConverter.parallelStreamConvert
 
 # Run progress: 57.14% complete, ETA 00:25:05
 # Fork: 1 of 1
@@ -2658,7 +2658,7 @@ Result "parallelStreamConvert":
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Average time, time/op
-# Benchmark: com.espressoprogrammer.foodscomposition.jmh.KCalConvertor.sequentialStreamComplexConvert
+# Benchmark: com.espressoprogrammer.foodscomposition.jmh.KCalConverter.sequentialStreamComplexConvert
 
 # Run progress: 71.43% complete, ETA 00:16:43
 # Fork: 1 of 1
@@ -3188,7 +3188,7 @@ Result "sequentialStreamComplexConvert":
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Average time, time/op
-# Benchmark: com.espressoprogrammer.foodscomposition.jmh.KCalConvertor.sequentialStreamConvert
+# Benchmark: com.espressoprogrammer.foodscomposition.jmh.KCalConverter.sequentialStreamConvert
 
 # Run progress: 85.71% complete, ETA 00:08:21
 # Fork: 1 of 1
@@ -3712,12 +3712,12 @@ Result "sequentialStreamConvert":
 # Run complete. Total time: 00:58:32
 
 Benchmark                                     Mode  Cnt         Score       Error  Units
-KCalConvertor.baseline                        avgt  400         0.330 ±     0.001  ns/op
-KCalConvertor.forEachComplexConvert           avgt  400  11349306.416 ± 27646.092  ns/op
-KCalConvertor.forEachConvert                  avgt  400    182847.388 ±   349.768  ns/op
-KCalConvertor.parallelStreamComplexConvert    avgt  400   3787528.986 ±  4439.437  ns/op
-KCalConvertor.parallelStreamConvert           avgt  400    158258.151 ±   552.657  ns/op
-KCalConvertor.sequentialStreamComplexConvert  avgt  400  11357443.218 ± 27301.337  ns/op
-KCalConvertor.sequentialStreamConvert         avgt  400    184943.663 ±   277.724  ns/op
+KCalConverter.baseline                        avgt  400         0.330 ±     0.001  ns/op
+KCalConverter.forEachComplexConvert           avgt  400  11349306.416 ± 27646.092  ns/op
+KCalConverter.forEachConvert                  avgt  400    182847.388 ±   349.768  ns/op
+KCalConverter.parallelStreamComplexConvert    avgt  400   3787528.986 ±  4439.437  ns/op
+KCalConverter.parallelStreamConvert           avgt  400    158258.151 ±   552.657  ns/op
+KCalConverter.sequentialStreamComplexConvert  avgt  400  11357443.218 ± 27301.337  ns/op
+KCalConverter.sequentialStreamConvert         avgt  400    184943.663 ±   277.724  ns/op
 
 Process finished with exit code 0

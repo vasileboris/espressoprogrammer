@@ -1,9 +1,9 @@
 package com.espressoprogrammer.foodscomposition.jmh;
 
-import com.espressoprogrammer.foodscomposition.convertor.ForkJoinConvertor;
+import com.espressoprogrammer.foodscomposition.converter.ForkJoinConverter;
 import com.espressoprogrammer.foodscomposition.dto.Abbrev;
 import com.espressoprogrammer.foodscomposition.dto.AbbrevKcal;
-import com.espressoprogrammer.foodscomposition.dto.ConvertorKt;
+import com.espressoprogrammer.foodscomposition.dto.ConverterKt;
 import com.espressoprogrammer.foodscomposition.parser.BufferedReaderAbbrevParser;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
@@ -19,12 +19,13 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 @BenchmarkMode(Mode.AverageTime)
-@OutputTimeUnit(TimeUnit.MILLISECONDS)
+@OutputTimeUnit(TimeUnit.NANOSECONDS)
 @Warmup(iterations = 25)
 @Measurement(iterations = 100)
 @Fork(1)
 @State(Scope.Thread)
-public class KCalConvertorConvert {
+public class KCalConverterConvert {
+    private static final ForkJoinPool FORK_JOIN_POOL = new ForkJoinPool();
 
     List<Abbrev> abbrevs;
 
@@ -41,7 +42,7 @@ public class KCalConvertorConvert {
     public void forEach(Blackhole blackhole) {
         List<AbbrevKcal> abbrevKcals = new ArrayList<>(abbrevs.size());
         for(Abbrev abbrev : abbrevs) {
-            abbrevKcals.add(ConvertorKt.convert(abbrev));
+            abbrevKcals.add(ConverterKt.convert(abbrev));
         }
         blackhole.consume(abbrevKcals);
     }
@@ -49,7 +50,7 @@ public class KCalConvertorConvert {
     @Benchmark
     public void sequentialStream(Blackhole blackhole) {
         List<AbbrevKcal> abbrevKcals = abbrevs.stream()
-            .map(ConvertorKt::convert)
+            .map(ConverterKt::convert)
             .collect(Collectors.toList());
         blackhole.consume(abbrevKcals);
     }
@@ -57,21 +58,21 @@ public class KCalConvertorConvert {
     @Benchmark
     public void parallelStream(Blackhole blackhole) {
         List<AbbrevKcal> abbrevKcals = abbrevs.parallelStream()
-            .map(ConvertorKt::convert)
+            .map(ConverterKt::convert)
             .collect(Collectors.toList());
         blackhole.consume(abbrevKcals);
     }
 
     @Benchmark
     public void forkJoinStream(Blackhole blackhole) {
-        List<AbbrevKcal> abbrevKcals = new ForkJoinPool()
-            .invoke(new ForkJoinConvertor<>(abbrevs, ConvertorKt::convert));
+        List<AbbrevKcal> abbrevKcals = FORK_JOIN_POOL
+            .invoke(new ForkJoinConverter<>(abbrevs, ConverterKt::convert));
         blackhole.consume(abbrevKcals);
     }
 
     public static void main(String[] args) throws RunnerException {
         Options opt = new OptionsBuilder()
-            .include(KCalConvertorConvert.class.getSimpleName())
+            .include(KCalConverterConvert.class.getSimpleName())
             .build();
 
         new Runner(opt).run();
