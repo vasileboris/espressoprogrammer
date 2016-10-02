@@ -1,6 +1,7 @@
 package com.espressoprogrammer.foodscomposition.jmh;
 
 import com.espressoprogrammer.foodscomposition.converter.ForkJoinConverter;
+import com.espressoprogrammer.foodscomposition.converter.OptimisedForkJoinConverter;
 import com.espressoprogrammer.foodscomposition.dto.Abbrev;
 import com.espressoprogrammer.foodscomposition.dto.AbbrevKcal;
 import com.espressoprogrammer.foodscomposition.dto.ConverterKt;
@@ -67,6 +68,13 @@ public class KCalConverterConvert {
     public void forkJoinStream(Blackhole blackhole) {
         List<AbbrevKcal> abbrevKcals = FORK_JOIN_POOL
             .invoke(new ForkJoinConverter<>(abbrevs, ConverterKt::convert));
+        blackhole.consume(abbrevKcals);
+    }
+
+    @Benchmark
+    public void optimisedForkJoinStream(Blackhole blackhole) {
+        List<AbbrevKcal> abbrevKcals = FORK_JOIN_POOL
+            .invoke(new OptimisedForkJoinConverter<>(abbrevs, ConverterKt::convert));
         blackhole.consume(abbrevKcals);
     }
 
