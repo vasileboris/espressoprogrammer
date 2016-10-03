@@ -1067,7 +1067,7 @@ Result "forEach":
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Average time, time/op
-# Benchmark: com.espressoprogrammer.foodscomposition.jmh.KCalConverterComplexConvert.forkJoinStream
+# Benchmark: com.espressoprogrammer.foodscomposition.jmh.KCalConverterComplexConvert.ForkJoin
 
 # Run progress: 16.67% complete, ETA 01:23:42
 # Fork: 1 of 1
@@ -1582,7 +1582,7 @@ Iteration 399: 4341591.987 ns/op
 Iteration 400: 4329028.267 ns/op
 
 
-Result "forkJoinStream":
+Result "ForkJoin":
   4861175.234 ±(99.9%) 117405.050 ns/op [Average]
   (min, avg, max) = (4267504.132, 4861175.234, 7384460.816), stdev = 708309.641
   CI (99.9%): [4743770.184, 4978580.285] (assumes normal distribution)
@@ -1597,7 +1597,7 @@ Result "forkJoinStream":
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Average time, time/op
-# Benchmark: com.espressoprogrammer.foodscomposition.jmh.KCalConverterComplexConvert.optimisedForkJoinStream
+# Benchmark: com.espressoprogrammer.foodscomposition.jmh.KCalConverterComplexConvert.optimizedForkJoin
 
 # Run progress: 25.00% complete, ETA 01:15:19
 # Fork: 1 of 1
@@ -2112,7 +2112,7 @@ Iteration 399: 4570828.909 ns/op
 Iteration 400: 4594216.202 ns/op
 
 
-Result "optimisedForkJoinStream":
+Result "optimizedForkJoin":
   4845830.284 ±(99.9%) 86367.399 ns/op [Average]
   (min, avg, max) = (4348237.391, 4845830.284, 7469864.664), stdev = 521058.178
   CI (99.9%): [4759462.885, 4932197.684] (assumes normal distribution)
@@ -4247,7 +4247,7 @@ Result "forEach":
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Average time, time/op
-# Benchmark: com.espressoprogrammer.foodscomposition.jmh.KCalConverterConvert.forkJoinStream
+# Benchmark: com.espressoprogrammer.foodscomposition.jmh.KCalConverterConvert.ForkJoin
 
 # Run progress: 66.67% complete, ETA 00:33:27
 # Fork: 1 of 1
@@ -4762,7 +4762,7 @@ Iteration 399: 285875.742 ns/op
 Iteration 400: 282632.445 ns/op
 
 
-Result "forkJoinStream":
+Result "ForkJoin":
   285379.307 ±(99.9%) 631.312 ns/op [Average]
   (min, avg, max) = (278373.423, 285379.307, 322201.461), stdev = 3808.730
   CI (99.9%): [284747.995, 286010.618] (assumes normal distribution)
@@ -4777,7 +4777,7 @@ Result "forkJoinStream":
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Average time, time/op
-# Benchmark: com.espressoprogrammer.foodscomposition.jmh.KCalConverterConvert.optimisedForkJoinStream
+# Benchmark: com.espressoprogrammer.foodscomposition.jmh.KCalConverterConvert.optimizedForkJoin
 
 # Run progress: 75.00% complete, ETA 00:25:05
 # Fork: 1 of 1
@@ -5292,7 +5292,7 @@ Iteration 399: 263292.176 ns/op
 Iteration 400: 264972.693 ns/op
 
 
-Result "optimisedForkJoinStream":
+Result "optimizedForkJoin":
   265076.248 ±(99.9%) 371.608 ns/op [Average]
   (min, avg, max) = (260679.569, 265076.248, 277295.052), stdev = 2241.925
   CI (99.9%): [264704.641, 265447.856] (assumes normal distribution)
@@ -6363,13 +6363,13 @@ Result "sequentialStream":
 Benchmark                                            Mode  Cnt         Score        Error  Units
 KCalConverterComplexConvert.baseline                 avgt  400         0.330 ±      0.003  ns/op
 KCalConverterComplexConvert.forEach                  avgt  400  12599551.514 ± 143074.046  ns/op
-KCalConverterComplexConvert.forkJoinStream           avgt  400   4861175.234 ± 117405.050  ns/op
-KCalConverterComplexConvert.optimisedForkJoinStream  avgt  400   4845830.284 ±  86367.399  ns/op
+KCalConverterComplexConvert.ForkJoin                 avgt  400   4861175.234 ± 117405.050  ns/op
+KCalConverterComplexConvert.optimizedForkJoin        avgt  400   4845830.284 ±  86367.399  ns/op
 KCalConverterComplexConvert.parallelStream           avgt  400   4408942.806 ±  25151.166  ns/op
 KCalConverterComplexConvert.sequentialStream         avgt  400  11537459.231 ±  67837.103  ns/op
 KCalConverterConvert.baseline                        avgt  400         0.325 ±      0.002  ns/op
 KCalConverterConvert.forEach                         avgt  400    182161.601 ±    286.254  ns/op
-KCalConverterConvert.forkJoinStream                  avgt  400    285379.307 ±    631.312  ns/op
-KCalConverterConvert.optimisedForkJoinStream         avgt  400    265076.248 ±    371.608  ns/op
+KCalConverterConvert.ForkJoin                        avgt  400    285379.307 ±    631.312  ns/op
+KCalConverterConvert.optimizedForkJoin               avgt  400    265076.248 ±    371.608  ns/op
 KCalConverterConvert.parallelStream                  avgt  400    229893.249 ±    980.095  ns/op
 KCalConverterConvert.sequentialStream                avgt  400    165020.617 ±    305.175  ns/op

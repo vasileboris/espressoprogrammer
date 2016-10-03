@@ -65,14 +65,14 @@ public class KCalConverterComplexConvert {
     }
 
     @Benchmark
-    public void forkJoinStream(Blackhole blackhole) {
+    public void forkJoin(Blackhole blackhole) {
         List<AbbrevKcal> abbrevKcals = FORK_JOIN_POOL
             .invoke(new ForkJoinConverter<>(abbrevs, ConverterKt::complexConvert));
         blackhole.consume(abbrevKcals);
     }
 
     @Benchmark
-    public void optimisedForkJoinStream(Blackhole blackhole) {
+    public void optimizedForkJoin(Blackhole blackhole) {
         List<AbbrevKcal> abbrevKcals = FORK_JOIN_POOL
             .invoke(new OptimisedForkJoinConverter<>(abbrevs, ConverterKt::complexConvert));
         blackhole.consume(abbrevKcals);
