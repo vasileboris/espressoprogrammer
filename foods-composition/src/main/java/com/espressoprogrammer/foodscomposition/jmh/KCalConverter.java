@@ -25,10 +25,10 @@ import java.util.stream.Collectors;
 @Measurement(iterations = 100)
 @Fork(1)
 @State(Scope.Thread)
-public class KCalConverterConvert {
+public class KCalConverter {
     private static final ForkJoinPool FORK_JOIN_POOL = new ForkJoinPool();
 
-    List<Abbrev> abbrevs;
+    private List<Abbrev> abbrevs;
 
     @Setup(value = Level.Trial)
     public void setup() {
@@ -80,7 +80,7 @@ public class KCalConverterConvert {
 
     public static void main(String[] args) throws RunnerException {
         Options opt = new OptionsBuilder()
-            .include(KCalConverterConvert.class.getSimpleName())
+            .include(KCalConverter.class.getSimpleName())
             .build();
 
         new Runner(opt).run();
