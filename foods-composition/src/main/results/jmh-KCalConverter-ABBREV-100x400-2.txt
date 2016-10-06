@@ -6363,13 +6363,13 @@ Result "sequentialStream":
 Benchmark                                     Mode  Cnt         Score        Error  Units
 KCalComplexConverter.baseline                 avgt  400         0.330 ±      0.003  ns/op
 KCalComplexConverter.forEach                  avgt  400  12599551.514 ± 143074.046  ns/op
-KCalComplexConverter.ForkJoin                 avgt  400   4861175.234 ± 117405.050  ns/op
+KCalComplexConverter.forkJoin                 avgt  400   4861175.234 ± 117405.050  ns/op
 KCalComplexConverter.optimizedForkJoin        avgt  400   4845830.284 ±  86367.399  ns/op
 KCalComplexConverter.parallelStream           avgt  400   4408942.806 ±  25151.166  ns/op
 KCalComplexConverter.sequentialStream         avgt  400  11537459.231 ±  67837.103  ns/op
 KCalConverter.baseline                        avgt  400         0.325 ±      0.002  ns/op
 KCalConverter.forEach                         avgt  400    182161.601 ±    286.254  ns/op
-KCalConverter.ForkJoin                        avgt  400    285379.307 ±    631.312  ns/op
+KCalConverter.forkJoin                        avgt  400    285379.307 ±    631.312  ns/op
 KCalConverter.optimizedForkJoin               avgt  400    265076.248 ±    371.608  ns/op
 KCalConverter.parallelStream                  avgt  400    229893.249 ±    980.095  ns/op
 KCalConverter.sequentialStream                avgt  400    165020.617 ±    305.175  ns/op
