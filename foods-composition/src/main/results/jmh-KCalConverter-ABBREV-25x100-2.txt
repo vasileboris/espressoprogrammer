@@ -1860,7 +1860,7 @@ Result "sequentialStream":
 
 # Run complete. Total time: 00:25:09
 
-Benchmark                                            Mode  Cnt         Score        Error  Units
+Benchmark                                     Mode  Cnt         Score        Error  Units
 KCalComplexConverter.baseline                 avgt  100         0.319 ±      0.001  ns/op
 KCalComplexConverter.forEach                  avgt  100  11541983.918 ±  47910.490  ns/op
 KCalComplexConverter.ForkJoin                 avgt  100   4345528.181 ± 158831.288  ns/op
