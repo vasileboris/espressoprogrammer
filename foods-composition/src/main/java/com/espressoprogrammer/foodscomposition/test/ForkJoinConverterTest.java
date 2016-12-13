@@ -23,17 +23,17 @@ public class ForkJoinConverterTest {
         Instant start = Instant.now();
         List<Abbrev> abbrevs = abbrevParser.parseFile("/sr28abbr/ABBREV.txt");
         Instant end = Instant.now();
-        logger.info ("parsed {} foods: in {} nanoseconds", abbrevs.size(), Duration.between(start, end).getNano());
+        logger.info ("parsed {} foods: in {} milliseconds", abbrevs.size(), Duration.between(start, end).toMillis());
 
         start = Instant.now();
         List<AbbrevKcal> abbrevKcals = FORK_JOIN_POOL.invoke(new ForkJoinConverter<>(abbrevs, ConverterKt::convert));
         end = Instant.now();
-        logger.info ("convert {} foods: in {} nanoseconds with ForkJoinConverter and ConverterKt::convert", abbrevKcals.size(), Duration.between(start, end).getNano());
+        logger.info ("convert {} foods: in {} milliseconds with ConverterKt::convert", abbrevKcals.size(), Duration.between(start, end).toMillis());
 
         start = Instant.now();
         List<AbbrevKcal> abbrevKcalsComplex = FORK_JOIN_POOL.invoke(new ForkJoinConverter<>(abbrevs, ConverterKt::complexConvert));
         end = Instant.now();
-        logger.info ("convert {} foods: in {} nanoseconds with ForkJoinConverter and ConverterKt::complexConvert", abbrevKcalsComplex.size(), Duration.between(start, end).getNano());
+        logger.info ("convert {} foods: in {} milliseconds with ConverterKt::complexConvert", abbrevKcalsComplex.size(), Duration.between(start, end).toMillis());
     }
 
 
