@@ -2,30 +2,39 @@ package com.espressoprogrammer.foodscomposition.converter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Spliterator;
 import java.util.concurrent.RecursiveTask;
 import java.util.function.Function;
 
-public class ForkJoinConverter<T, R> extends RecursiveTask<List<R>> {
+public class ForkJoinSpliteratorConverter<T, R> extends RecursiveTask<List<R>> {
     public static final int THRESHOLD = 1_000;
 
-    private final List<T> values;
+    private final Spliterator<T> spliterator;
     private final Function<T, R> map;
 
-    public ForkJoinConverter(List<T> values, Function<T, R> map) {
-        this.values = values;
+    public ForkJoinSpliteratorConverter(List<T> values, Function<T, R> map) {
+        this.spliterator = values.spliterator();
+        this.map = map;
+    }
+
+    private ForkJoinSpliteratorConverter(Spliterator<T> spliterator, Function<T, R> map) {
+        this.spliterator = spliterator;
         this.map = map;
     }
 
     @Override
     protected List<R> compute() {
-        if(values.size() <= THRESHOLD) {
+        if(spliterator == null) {
+            return new ArrayList<>();
+        }
+
+        if(spliterator.estimateSize() <= THRESHOLD) {
             return computeSequentially();
         }
 
-        int halfSize = values.size() / 2;
-        ForkJoinConverter<T, R> leftConverter = new ForkJoinConverter<T, R>(values.subList(0, halfSize), map);
+        ForkJoinSpliteratorConverter<T, R> leftConverter = new ForkJoinSpliteratorConverter<T, R>(spliterator.trySplit(), map);
         leftConverter.fork();
-        ForkJoinConverter<T, R> rightConverter = new ForkJoinConverter<T, R>(values.subList(halfSize, values.size()), map);
+        ForkJoinSpliteratorConverter<T, R> rightConverter = new ForkJoinSpliteratorConverter<T, R>(spliterator, map);
         rightConverter.fork();
 
         List<R> leftResults = leftConverter.join();
@@ -34,10 +43,8 @@ public class ForkJoinConverter<T, R> extends RecursiveTask<List<R>> {
     }
 
     private List<R> computeSequentially() {
-        List<R> results = new ArrayList<R>(values.size());
-        for(T value : values) {
-            results.add(map.apply(value));
-        }
+        List<R> results = new ArrayList<>((int) spliterator.estimateSize());
+        while (spliterator.tryAdvance(t -> results.add(map.apply(t)))){}
         return results;
     }
 

@@ -6,7 +6,7 @@ import java.util.concurrent.RecursiveTask;
 import java.util.function.Function;
 
 public class OptimisedForkJoinConverter<T, R> extends RecursiveTask<List<R>> {
-    private static final int THRESHOLD = 1_000;
+    public static final int THRESHOLD = 1_000;
 
     private final List<T> values;
     private final Function<T, R> map;

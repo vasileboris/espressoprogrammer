@@ -1,7 +1,10 @@
 package com.espressoprogrammer.foodscomposition.jmh;
 
 import com.espressoprogrammer.foodscomposition.converter.ForkJoinConverter;
+import com.espressoprogrammer.foodscomposition.converter.ForkJoinSpliteratorConverter;
+import com.espressoprogrammer.foodscomposition.converter.ForkJoinThresholdSpliteratorConverter;
 import com.espressoprogrammer.foodscomposition.converter.OptimisedForkJoinConverter;
+import com.espressoprogrammer.foodscomposition.converter.ThresholdSpliterator;
 import com.espressoprogrammer.foodscomposition.dto.Abbrev;
 import com.espressoprogrammer.foodscomposition.dto.AbbrevKcal;
 import com.espressoprogrammer.foodscomposition.dto.ConverterKt;
@@ -18,6 +21,7 @@ import java.util.List;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
@@ -75,6 +79,28 @@ public class KCalConverter {
     public void optimizedForkJoin(Blackhole blackhole) {
         List<AbbrevKcal> abbrevKcals = FORK_JOIN_POOL
             .invoke(new OptimisedForkJoinConverter<>(abbrevs, ConverterKt::convert));
+        blackhole.consume(abbrevKcals);
+    }
+
+    @Benchmark
+    public void forkJoinSpliterator(Blackhole blackhole) {
+        List<AbbrevKcal> abbrevKcals = FORK_JOIN_POOL
+            .invoke(new ForkJoinSpliteratorConverter<>(abbrevs, ConverterKt::convert));
+        blackhole.consume(abbrevKcals);
+    }
+
+    @Benchmark
+    public void forkJoinThresholdSpliterator(Blackhole blackhole) {
+        List<AbbrevKcal> abbrevKcals = FORK_JOIN_POOL
+            .invoke(new ForkJoinThresholdSpliteratorConverter<>(abbrevs, ConverterKt::convert));
+        blackhole.consume(abbrevKcals);
+    }
+
+    @Benchmark
+    public void parallelStreamThresholdSpliterator(Blackhole blackhole) {
+        List<AbbrevKcal> abbrevKcals = StreamSupport.stream(new ThresholdSpliterator<>(abbrevs), true)
+            .map(ConverterKt::convert)
+            .collect(Collectors.toList());
         blackhole.consume(abbrevKcals);
     }
 
