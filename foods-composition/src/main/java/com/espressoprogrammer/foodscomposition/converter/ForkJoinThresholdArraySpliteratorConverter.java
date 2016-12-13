@@ -6,16 +6,16 @@ import java.util.Spliterator;
 import java.util.concurrent.RecursiveTask;
 import java.util.function.Function;
 
-public class ForkJoinThresholdSpliteratorConverter<T, R> extends RecursiveTask<List<R>> {
+public class ForkJoinThresholdArraySpliteratorConverter<T, R> extends RecursiveTask<List<R>> {
     private final Spliterator<T> spliterator;
     private final Function<T, R> map;
 
-    public ForkJoinThresholdSpliteratorConverter(List<T> values, Function<T, R> map) {
-        this.spliterator = new ThresholdSpliterator<>(values);
+    public ForkJoinThresholdArraySpliteratorConverter(List<T> values, Function<T, R> map) {
+        this.spliterator = new ThresholdArraySpliterator<>(values);
         this.map = map;
     }
 
-    private ForkJoinThresholdSpliteratorConverter(Spliterator<T> spliterator, Function<T, R> map) {
+    private ForkJoinThresholdArraySpliteratorConverter(Spliterator<T> spliterator, Function<T, R> map) {
         this.spliterator = spliterator;
         this.map = map;
     }
@@ -31,9 +31,9 @@ public class ForkJoinThresholdSpliteratorConverter<T, R> extends RecursiveTask<L
             return computeSequentially();
         }
 
-        ForkJoinThresholdSpliteratorConverter<T, R> leftConverter = new ForkJoinThresholdSpliteratorConverter<>(firstHalfSpliterator, map);
+        ForkJoinThresholdArraySpliteratorConverter<T, R> leftConverter = new ForkJoinThresholdArraySpliteratorConverter<>(firstHalfSpliterator, map);
         leftConverter.fork();
-        ForkJoinThresholdSpliteratorConverter<T, R> rightConverter = new ForkJoinThresholdSpliteratorConverter<>(spliterator, map);
+        ForkJoinThresholdArraySpliteratorConverter<T, R> rightConverter = new ForkJoinThresholdArraySpliteratorConverter<>(spliterator, map);
         rightConverter.fork();
 
         List<R> leftResults = leftConverter.join();

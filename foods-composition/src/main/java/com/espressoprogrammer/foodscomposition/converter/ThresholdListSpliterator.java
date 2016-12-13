@@ -4,18 +4,18 @@ import java.util.List;
 import java.util.Spliterator;
 import java.util.function.Consumer;
 
-public class ThresholdSpliterator<T> implements Spliterator<T> {
+public class ThresholdListSpliterator<T> implements Spliterator<T> {
     public static final int THRESHOLD = 1_000;
 
     private final List<T> values;
     private int index;
     private final int endIndex;
 
-    public ThresholdSpliterator(List<T> values) {
+    public ThresholdListSpliterator(List<T> values) {
         this(values, 0, values.size());
     }
 
-    private ThresholdSpliterator(List<T> values, int index, int endIndex) {
+    private ThresholdListSpliterator(List<T> values, int index, int endIndex) {
         this.values = values;
         this.index = index;
         this.endIndex = endIndex;
@@ -37,7 +37,7 @@ public class ThresholdSpliterator<T> implements Spliterator<T> {
         if(index < endIndex && size() > THRESHOLD) {
 
             int middleIndex = index + size() / 2;
-            Spliterator<T> spliterator = new ThresholdSpliterator<>(values, index, middleIndex);
+            Spliterator<T> spliterator = new ThresholdListSpliterator<>(values, index, middleIndex);
             index = middleIndex;
             return spliterator;
         }

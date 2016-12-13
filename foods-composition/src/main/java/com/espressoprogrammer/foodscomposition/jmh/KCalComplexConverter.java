@@ -1,10 +1,6 @@
 package com.espressoprogrammer.foodscomposition.jmh;
 
-import com.espressoprogrammer.foodscomposition.converter.ForkJoinConverter;
-import com.espressoprogrammer.foodscomposition.converter.ForkJoinSpliteratorConverter;
-import com.espressoprogrammer.foodscomposition.converter.ForkJoinThresholdSpliteratorConverter;
-import com.espressoprogrammer.foodscomposition.converter.OptimisedForkJoinConverter;
-import com.espressoprogrammer.foodscomposition.converter.ThresholdSpliterator;
+import com.espressoprogrammer.foodscomposition.converter.*;
 import com.espressoprogrammer.foodscomposition.dto.Abbrev;
 import com.espressoprogrammer.foodscomposition.dto.AbbrevKcal;
 import com.espressoprogrammer.foodscomposition.dto.ConverterKt;
@@ -90,17 +86,32 @@ public class KCalComplexConverter {
     }
 
     @Benchmark
-    public void forkJoinThresholdSpliterator(Blackhole blackhole) {
+    public void forkJoinThresholdListSpliterator(Blackhole blackhole) {
         List<AbbrevKcal> abbrevKcals = FORK_JOIN_POOL
-            .invoke(new ForkJoinThresholdSpliteratorConverter<>(abbrevs, ConverterKt::complexConvert));
+            .invoke(new ForkJoinThresholdListSpliteratorConverter<>(abbrevs, ConverterKt::complexConvert));
         blackhole.consume(abbrevKcals);
     }
 
     @Benchmark
-    public void parallelStreamThresholdSpliterator(Blackhole blackhole) {
-        List<AbbrevKcal> abbrevKcals = StreamSupport.stream(new ThresholdSpliterator<>(abbrevs), true)
+    public void parallelStreamThresholdListSpliterator(Blackhole blackhole) {
+        List<AbbrevKcal> abbrevKcals = StreamSupport.stream(new ThresholdListSpliterator<>(abbrevs), true)
             .map(ConverterKt::complexConvert)
             .collect(Collectors.toList());
+        blackhole.consume(abbrevKcals);
+    }
+
+    @Benchmark
+    public void forkJoinThresholdArraySpliterator(Blackhole blackhole) {
+        List<AbbrevKcal> abbrevKcals = FORK_JOIN_POOL
+                .invoke(new ForkJoinThresholdArraySpliteratorConverter<>(abbrevs, ConverterKt::complexConvert));
+        blackhole.consume(abbrevKcals);
+    }
+
+    @Benchmark
+    public void parallelStreamThresholdArraySpliterator(Blackhole blackhole) {
+        List<AbbrevKcal> abbrevKcals = StreamSupport.stream(new ThresholdArraySpliterator<>(abbrevs), true)
+                .map(ConverterKt::complexConvert)
+                .collect(Collectors.toList());
         blackhole.consume(abbrevKcals);
     }
 

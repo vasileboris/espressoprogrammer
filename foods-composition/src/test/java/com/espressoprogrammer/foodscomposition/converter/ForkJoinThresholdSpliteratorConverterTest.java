@@ -5,7 +5,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.espressoprogrammer.foodscomposition.converter.ThresholdSpliterator.THRESHOLD;
+import static com.espressoprogrammer.foodscomposition.converter.ThresholdListSpliterator.THRESHOLD;
 import static com.espressoprogrammer.foodscomposition.converter.ConverterUtil.FORK_JOIN_POOL;
 import static com.espressoprogrammer.foodscomposition.converter.ConverterUtil.converter;
 import static com.espressoprogrammer.foodscomposition.converter.ConverterUtil.createValues;
@@ -16,14 +16,14 @@ public class ForkJoinThresholdSpliteratorConverterTest {
 
     @Test
     public void computeWithEmptyList() {
-        assertThat(FORK_JOIN_POOL.invoke(new ForkJoinThresholdSpliteratorConverter<>(new ArrayList<>(), converter))).isEmpty();
+        assertThat(FORK_JOIN_POOL.invoke(new ForkJoinThresholdListSpliteratorConverter<>(new ArrayList<>(), converter))).isEmpty();
     }
 
     @Test
     public void computeWithValuesCountLessThanThreshold() {
         List<Integer> values = createValues(THRESHOLD - 1);
         List<String> expectedResults = createExpectedResults(THRESHOLD - 1);
-        assertThat(FORK_JOIN_POOL.invoke(new ForkJoinThresholdSpliteratorConverter<>(values, converter)))
+        assertThat(FORK_JOIN_POOL.invoke(new ForkJoinThresholdListSpliteratorConverter<>(values, converter)))
             .isEqualTo(expectedResults);
     }
 
@@ -31,7 +31,7 @@ public class ForkJoinThresholdSpliteratorConverterTest {
     public void computeWithValuesCountEqualToThreshold() {
         List<Integer> values = createValues(THRESHOLD);
         List<String> expectedResults = createExpectedResults(THRESHOLD);
-        assertThat(FORK_JOIN_POOL.invoke(new ForkJoinThresholdSpliteratorConverter<>(values, converter)))
+        assertThat(FORK_JOIN_POOL.invoke(new ForkJoinThresholdListSpliteratorConverter<>(values, converter)))
             .isEqualTo(expectedResults);
     }
 
@@ -39,7 +39,7 @@ public class ForkJoinThresholdSpliteratorConverterTest {
     public void computeWithValuesCountGreaterThanThreshold() {
         List<Integer> values = createValues(THRESHOLD + 1);
         List<String> expectedResults = createExpectedResults(THRESHOLD + 1);
-        assertThat(FORK_JOIN_POOL.invoke(new ForkJoinThresholdSpliteratorConverter<>(values, converter)))
+        assertThat(FORK_JOIN_POOL.invoke(new ForkJoinThresholdListSpliteratorConverter<>(values, converter)))
             .isEqualTo(expectedResults);
     }
 }
