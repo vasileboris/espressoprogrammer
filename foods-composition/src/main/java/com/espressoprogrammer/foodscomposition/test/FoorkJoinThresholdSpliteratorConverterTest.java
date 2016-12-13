@@ -14,9 +14,9 @@ import java.time.Instant;
 import java.util.List;
 import java.util.concurrent.ForkJoinPool;
 
-public class ForkJoinThresholdSpliteratorConverterTest {
+public class FoorkJoinThresholdSpliteratorConverterTest {
     private static final ForkJoinPool FORK_JOIN_POOL = new ForkJoinPool();
-    private static final Logger logger = LoggerFactory.getLogger(ForkJoinThresholdSpliteratorConverterTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(FoorkJoinThresholdSpliteratorConverterTest.class);
 
     public static void main(String... args) {
         AbbrevParser abbrevParser = new StreamAbbrevParser();
