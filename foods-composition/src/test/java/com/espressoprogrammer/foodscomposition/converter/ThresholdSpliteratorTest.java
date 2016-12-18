@@ -10,7 +10,7 @@ import java.util.Spliterator;
 import static com.espressoprogrammer.foodscomposition.converter.ConverterUtil.createValues;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ThresholdListSpliteratorTest {
+public class ThresholdSpliteratorTest {
 
     private List<Integer> results;
 
@@ -21,7 +21,7 @@ public class ThresholdListSpliteratorTest {
 
     @Test
     public void tryAdvanceWithEmptyList() {
-        ThresholdListSpliterator<Integer> thresholdSpliterator = new ThresholdListSpliterator<>(new ArrayList<>());
+        ThresholdSpliterator<Integer> thresholdSpliterator = new ThresholdSpliterator<>(new ArrayList<>());
 
         assertThat(results).isEmpty();
         assertThat(thresholdSpliterator.tryAdvance(results::add)).isFalse();
@@ -34,7 +34,7 @@ public class ThresholdListSpliteratorTest {
         values.add(1);
         values.add(2);
         values.add(3);
-        ThresholdListSpliterator<Integer> thresholdSpliterator = new ThresholdListSpliterator<>(values);
+        ThresholdSpliterator<Integer> thresholdSpliterator = new ThresholdSpliterator<>(values);
 
         assertThat(results).isEmpty();
         assertThat(thresholdSpliterator.tryAdvance(results::add)).isTrue();
@@ -47,7 +47,7 @@ public class ThresholdListSpliteratorTest {
 
     @Test
     public void estimateSizeWithEmptyList() {
-        ThresholdListSpliterator<Integer> thresholdSpliterator = new ThresholdListSpliterator<>(new ArrayList<>());
+        ThresholdSpliterator<Integer> thresholdSpliterator = new ThresholdSpliterator<>(new ArrayList<>());
 
         assertThat(thresholdSpliterator.estimateSize()).isZero();
     }
@@ -58,25 +58,25 @@ public class ThresholdListSpliteratorTest {
         values.add(1);
         values.add(2);
         values.add(3);
-        ThresholdListSpliterator<Integer> thresholdSpliterator = new ThresholdListSpliterator<>(values);
+        ThresholdSpliterator<Integer> thresholdSpliterator = new ThresholdSpliterator<>(values);
 
         assertThat(thresholdSpliterator.estimateSize()).isEqualTo(3);
     }
 
     @Test
     public void trySplitWithEmptyList() {
-        ThresholdListSpliterator<Integer> thresholdSpliterator = new ThresholdListSpliterator<>(new ArrayList<>());
+        ThresholdSpliterator<Integer> thresholdSpliterator = new ThresholdSpliterator<>(new ArrayList<>());
 
         assertThat(thresholdSpliterator.trySplit()).isNull();
     }
 
     @Test
     public void trySplitWithValuesCountLessThanThreshold() {
-        List<Integer> values = createValues(ThresholdListSpliterator.THRESHOLD - 1);
-        ThresholdListSpliterator<Integer> thresholdSpliterator = new ThresholdListSpliterator<>(values);
+        List<Integer> values = createValues(ThresholdSpliterator.THRESHOLD - 1);
+        ThresholdSpliterator<Integer> thresholdSpliterator = new ThresholdSpliterator<>(values);
 
         assertThat(thresholdSpliterator.trySplit()).isNull();
-        assertThat(thresholdSpliterator.estimateSize()).isEqualTo(ThresholdListSpliterator.THRESHOLD - 1);
+        assertThat(thresholdSpliterator.estimateSize()).isEqualTo(ThresholdSpliterator.THRESHOLD - 1);
         List<Integer> secondHalfValues = new ArrayList<>();
         while(thresholdSpliterator.tryAdvance(s -> secondHalfValues.add(s))){}
         for(int i=0; i< secondHalfValues.size(); i++) {
@@ -86,8 +86,8 @@ public class ThresholdListSpliteratorTest {
 
     @Test
     public void tryAdvanceAndThenSplitWithValuesCountLessThanThreshold() {
-        List<Integer> values = createValues(ThresholdListSpliterator.THRESHOLD);
-        ThresholdListSpliterator<Integer> thresholdSpliterator = new ThresholdListSpliterator<>(values);
+        List<Integer> values = createValues(ThresholdSpliterator.THRESHOLD);
+        ThresholdSpliterator<Integer> thresholdSpliterator = new ThresholdSpliterator<>(values);
 
         List<Integer> firstHalfValues = new ArrayList<>();
         thresholdSpliterator.tryAdvance(s -> firstHalfValues.add(s));
@@ -96,7 +96,7 @@ public class ThresholdListSpliteratorTest {
         }
 
         assertThat(thresholdSpliterator.trySplit()).isNull();
-        assertThat(thresholdSpliterator.estimateSize()).isEqualTo(ThresholdListSpliterator.THRESHOLD - 1);
+        assertThat(thresholdSpliterator.estimateSize()).isEqualTo(ThresholdSpliterator.THRESHOLD - 1);
         List<Integer> secondHalfValues = new ArrayList<>();
         while(thresholdSpliterator.tryAdvance(s -> secondHalfValues.add(s))){}
         for(int i=0; i< secondHalfValues.size(); i++) {
@@ -106,11 +106,11 @@ public class ThresholdListSpliteratorTest {
 
     @Test
     public void trySplitWithValuesCountEqualToThreshold() {
-        List<Integer> values = createValues(ThresholdListSpliterator.THRESHOLD);
-        ThresholdListSpliterator<Integer> thresholdSpliterator = new ThresholdListSpliterator<>(values);
+        List<Integer> values = createValues(ThresholdSpliterator.THRESHOLD);
+        ThresholdSpliterator<Integer> thresholdSpliterator = new ThresholdSpliterator<>(values);
 
         assertThat(thresholdSpliterator.trySplit()).isNull();
-        assertThat(thresholdSpliterator.estimateSize()).isEqualTo(ThresholdListSpliterator.THRESHOLD);
+        assertThat(thresholdSpliterator.estimateSize()).isEqualTo(ThresholdSpliterator.THRESHOLD);
         List<Integer> secondHalfValues = new ArrayList<>();
         while(thresholdSpliterator.tryAdvance(s -> secondHalfValues.add(s))){}
         for(int i=0; i< secondHalfValues.size(); i++) {
@@ -120,8 +120,8 @@ public class ThresholdListSpliteratorTest {
 
     @Test
     public void tryAdvanceAndThenSplitWithValuesCountEqualToThreshold() {
-        List<Integer> values = createValues(ThresholdListSpliterator.THRESHOLD + 1);
-        ThresholdListSpliterator<Integer> thresholdSpliterator = new ThresholdListSpliterator<>(values);
+        List<Integer> values = createValues(ThresholdSpliterator.THRESHOLD + 1);
+        ThresholdSpliterator<Integer> thresholdSpliterator = new ThresholdSpliterator<>(values);
 
         List<Integer> firstHalfValues = new ArrayList<>();
         thresholdSpliterator.tryAdvance(s -> firstHalfValues.add(s));
@@ -130,7 +130,7 @@ public class ThresholdListSpliteratorTest {
         }
 
         assertThat(thresholdSpliterator.trySplit()).isNull();
-        assertThat(thresholdSpliterator.estimateSize()).isEqualTo(ThresholdListSpliterator.THRESHOLD);
+        assertThat(thresholdSpliterator.estimateSize()).isEqualTo(ThresholdSpliterator.THRESHOLD);
         List<Integer> secondHalfValues = new ArrayList<>();
         while(thresholdSpliterator.tryAdvance(s -> secondHalfValues.add(s))){}
         for(int i=0; i< secondHalfValues.size(); i++) {
@@ -140,12 +140,12 @@ public class ThresholdListSpliteratorTest {
 
     @Test
     public void trySplitWithValuesCountGreaterThanThreshold() {
-        List<Integer> values = createValues(ThresholdListSpliterator.THRESHOLD + 1);
+        List<Integer> values = createValues(ThresholdSpliterator.THRESHOLD + 1);
 
-        ThresholdListSpliterator<Integer> thresholdSpliterator = new ThresholdListSpliterator<>(values);
+        ThresholdSpliterator<Integer> thresholdSpliterator = new ThresholdSpliterator<>(values);
 
         Spliterator<Integer> firstHalfThresholdSpliterator = thresholdSpliterator.trySplit();
-        int firstHalfSpliteratorSize = (ThresholdListSpliterator.THRESHOLD + 1) / 2;
+        int firstHalfSpliteratorSize = (ThresholdSpliterator.THRESHOLD + 1) / 2;
 
         assertThat(firstHalfThresholdSpliterator.estimateSize()).isEqualTo(firstHalfSpliteratorSize);
         List<Integer> firstHalfValues = new ArrayList<>();
@@ -164,14 +164,14 @@ public class ThresholdListSpliteratorTest {
 
     @Test
     public void tryAdvanceAndThenSplitWithValuesCountGreaterThanThreshold() {
-        List<Integer> values = createValues(ThresholdListSpliterator.THRESHOLD + 2);
+        List<Integer> values = createValues(ThresholdSpliterator.THRESHOLD + 2);
 
-        ThresholdListSpliterator<Integer> thresholdSpliterator = new ThresholdListSpliterator<>(values);
+        ThresholdSpliterator<Integer> thresholdSpliterator = new ThresholdSpliterator<>(values);
         List<Integer> firstHalfValues = new ArrayList<>();
         thresholdSpliterator.tryAdvance(s -> firstHalfValues.add(s));
 
         Spliterator<Integer> firstHalfThresholdSpliterator = thresholdSpliterator.trySplit();
-        int firstHalfSpliteratorSize = (ThresholdListSpliterator.THRESHOLD + 1) / 2;
+        int firstHalfSpliteratorSize = (ThresholdSpliterator.THRESHOLD + 1) / 2;
 
         assertThat(firstHalfThresholdSpliterator.estimateSize()).isEqualTo(firstHalfSpliteratorSize);
         while(firstHalfThresholdSpliterator.tryAdvance(s -> firstHalfValues.add(s))){}

@@ -86,15 +86,15 @@ public class KCalConverter {
     }
 
     @Benchmark
-    public void forkJoinThresholdListSpliterator(Blackhole blackhole) {
+    public void forkJoinThresholdSpliterator(Blackhole blackhole) {
         List<AbbrevKcal> abbrevKcals = FORK_JOIN_POOL
-            .invoke(new ForkJoinThresholdListSpliteratorConverter<>(abbrevs, ConverterKt::convert));
+            .invoke(new ForkJoinThresholdSpliteratorConverter<>(abbrevs, ConverterKt::convert));
         blackhole.consume(abbrevKcals);
     }
 
     @Benchmark
-    public void parallelStreamThresholdListSpliterator(Blackhole blackhole) {
-        List<AbbrevKcal> abbrevKcals = StreamSupport.stream(new ThresholdListSpliterator<>(abbrevs), true)
+    public void parallelStreamThresholdSpliterator(Blackhole blackhole) {
+        List<AbbrevKcal> abbrevKcals = StreamSupport.stream(new ThresholdSpliterator<>(abbrevs), true)
             .map(ConverterKt::convert)
             .collect(Collectors.toList());
         blackhole.consume(abbrevKcals);

@@ -1,6 +1,6 @@
 package com.espressoprogrammer.foodscomposition.test;
 
-import com.espressoprogrammer.foodscomposition.converter.ForkJoinThresholdListSpliteratorConverter;
+import com.espressoprogrammer.foodscomposition.converter.ForkJoinThresholdSpliteratorConverter;
 import com.espressoprogrammer.foodscomposition.dto.Abbrev;
 import com.espressoprogrammer.foodscomposition.dto.AbbrevKcal;
 import com.espressoprogrammer.foodscomposition.dto.ConverterKt;
@@ -14,9 +14,9 @@ import java.time.Instant;
 import java.util.List;
 import java.util.concurrent.ForkJoinPool;
 
-public class ForkJoinThresholdListSpliteratorConverterTest {
+public class ForkJoinThresholdSpliteratorConverterTest {
     private static final ForkJoinPool FORK_JOIN_POOL = new ForkJoinPool();
-    private static final Logger logger = LoggerFactory.getLogger(ForkJoinThresholdListSpliteratorConverterTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(ForkJoinThresholdSpliteratorConverterTest.class);
 
     public static void main(String... args) {
         AbbrevParser abbrevParser = new StreamAbbrevParser();
@@ -26,12 +26,12 @@ public class ForkJoinThresholdListSpliteratorConverterTest {
         logger.info ("parsed {} foods: in {} milliseconds", abbrevs.size(), Duration.between(start, end).toMillis());
 
         start = Instant.now();
-        List<AbbrevKcal> abbrevKcals = FORK_JOIN_POOL.invoke(new ForkJoinThresholdListSpliteratorConverter<>(abbrevs, ConverterKt::convert));
+        List<AbbrevKcal> abbrevKcals = FORK_JOIN_POOL.invoke(new ForkJoinThresholdSpliteratorConverter<>(abbrevs, ConverterKt::convert));
         end = Instant.now();
         logger.info ("convert {} foods: in {} milliseconds with ConverterKt::convert", abbrevKcals.size(), Duration.between(start, end).toMillis());
 
         start = Instant.now();
-        List<AbbrevKcal> abbrevKcalsComplex = FORK_JOIN_POOL.invoke(new ForkJoinThresholdListSpliteratorConverter<>(abbrevs, ConverterKt::complexConvert));
+        List<AbbrevKcal> abbrevKcalsComplex = FORK_JOIN_POOL.invoke(new ForkJoinThresholdSpliteratorConverter<>(abbrevs, ConverterKt::complexConvert));
         end = Instant.now();
         logger.info ("convert {} foods: in {} milliseconds with ConverterKt::complexConvert", abbrevKcalsComplex.size(), Duration.between(start, end).toMillis());
     }
