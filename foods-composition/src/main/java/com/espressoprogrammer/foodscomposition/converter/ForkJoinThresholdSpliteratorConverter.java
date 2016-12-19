@@ -43,7 +43,7 @@ public class ForkJoinThresholdSpliteratorConverter<T, R> extends RecursiveTask<L
 
     private List<R> computeSequentially() {
         List<R> results = new ArrayList<>((int) spliterator.estimateSize());
-        while (spliterator.tryAdvance(t -> results.add(map.apply(t)))){}
+        spliterator.forEachRemaining(t -> results.add(map.apply(t)));
         return results;
     }
 
