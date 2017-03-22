@@ -2,19 +2,14 @@ package com.espressoprogrammer.closures;
 
 import java.util.function.Function;
 
-public class DiscountCalculator {
+public class BrokenDiscountCalculator {
 
     private static Function<Double, Double> calculator(String goodsType) {
-        Double discount = getDiscount(goodsType);
-        return v -> v * (1 - discount);
-    }
-
-    private static Double getDiscount(String goodsType) {
         Double discount = 0.1;
         if("FOOD".equals(goodsType)) {
-            discount = 0.2;
+            //discount = 0.2;
         }
-        return discount;
+        return v -> v * (1 - discount);
     }
 
     public static void main(String... args) {

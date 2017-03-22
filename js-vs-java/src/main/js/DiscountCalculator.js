@@ -14,6 +14,15 @@
     var beerDiscountCalculator = calculator('BEER');
     var foodDiscountCalculator = calculator('FOOD');
 
+    console.log('FIRST SELL');
+    console.log('BEER(100): ' + beerDiscountCalculator(100));
+    console.log('FOOD(100): ' + foodDiscountCalculator(100));
+
+    console.log('SECOND SELL');
+    console.log('BEER(100): ' + beerDiscountCalculator(100));
+    console.log('FOOD(100): ' + foodDiscountCalculator(100));
+
+    console.log('THIRD SELL');
     console.log('BEER(100): ' + beerDiscountCalculator(100));
     console.log('FOOD(100): ' + foodDiscountCalculator(100));
 
