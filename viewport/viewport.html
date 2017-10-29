@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Understanding viewport</title>
   <style>
     .main {
@@ -45,6 +46,10 @@
       margin-right: 5px;
     }
 
+    .frozen {
+      min-width: 1280px;
+    }
+
     @media only screen and (max-width: 1024px) {
       .main {
         font-size: 200%;
@@ -74,33 +79,44 @@
 
       function updateCSSPixels() {
           $('#html-wh').html(document.documentElement.offsetWidth + ' x ' + document.documentElement.offsetHeight + ' px');
-          $('#viewport-wh').html(document.documentElement.clientWidth + ' x ' + document.documentElement.clientHeight + ' px');
+          $('#layout-viewport-wh').html(document.documentElement.clientWidth + ' x ' + document.documentElement.clientHeight + ' px');
           $('#window-inner-wh').html(window.innerWidth + ' x ' + window.innerHeight + ' px');
           $('#window-page-xy-offset').html(window.pageXOffset + ' x ' + window.pageYOffset + ' px');
       }
 
-      function updateAllPixels() {
-          updateDevicePixels();
-          updateCSSPixels();
+      function updateEventPixels(e) {
+          $('#device-xy').html(e.screenX + ' x ' + e.screenY + ' px');
+          $('#html-xy').html(e.pageX + ' x ' + e.pageY + ' px');
+          $('#viewport-xy').html(e.clientX + ' x ' + e.clientY + ' px');
+      }
+
+      function clearEventPixels() {
+          $('#device-xy').html('');
+          $('#html-xy').html('');
+          $('#viewport-xy').html('');
       }
 
       $(function() {
           updateLoremIpsum();
-          updateAllPixels();
+          updateDevicePixels();
+          updateCSSPixels();
+          clearEventPixels();
       });
 
       $(window).resize(function() {
-          updateAllPixels();
+          updateDevicePixels();
+          updateCSSPixels();
+          clearEventPixels();
       });
 
       $(window).scroll(function() {
-          updateAllPixels();
+          updateDevicePixels();
+          updateCSSPixels();
+          clearEventPixels();
       });
 
       $(document).click(function (e) {
-          $('#device-xy').html(e.screenX + ' x ' + e.screenY + ' px');
-          $('#html-xy').html(e.pageX + ' x ' + e.pageY + ' px');
-          $('#viewport-xy').html(e.clientX + ' x ' + e.clientY + ' px');
+          updateEventPixels(e);
       });
   </script>
 </head>
@@ -127,7 +143,8 @@
       <div class="section-title">CSS pixels</div>
 
       <div class="element">
-        <div class="element-title">html (document.documentElement) size </div>
+        <div class="element-title">html size</div>
+        <div class="element-title">document.documentElement</div>
         <div class="element-details">
           <div class="element-label">offsetWidth x offsetHeight:</div>
           <div class="element-value" id="html-wh"></div>
@@ -139,10 +156,20 @@
       </div>
 
       <div class="element">
-        <div class="element-title">viewport (document.documentElement) size, (-scrollbars) </div>
+        <div class="element-title">layout viewport size (-scrollbars)</div>
+        <div class="element-title">document.documentElement</div>
         <div class="element-details">
           <div class="element-label">clientWidth x clientHeight:</div>
-          <div class="element-value" id="viewport-wh"></div>
+          <div class="element-value" id="layout-viewport-wh"></div>
+        </div>
+      </div>
+
+      <div class="element">
+        <div class="element-title">visual viewport size (+scrollbars)</div>
+        <div class="element-title">window</div>
+        <div class="element-details">
+          <div class="element-label">innerWidth x innerHeight:</div>
+          <div class="element-value" id="window-inner-wh"></div>
         </div>
         <div class="element-details">
           <div class="element-label">clientX x clientY:</div>
@@ -151,15 +178,8 @@
       </div>
 
       <div class="element">
-        <div class="element-title">window size (+scrollbars)</div>
-        <div class="element-details">
-          <div class="element-label">innerWidth x innerHeight:</div>
-          <div class="element-value" id="window-inner-wh"></div>
-        </div>
-      </div>
-
-      <div class="element">
         <div class="element-title">window scrolling offset</div>
+        <div class="element-title">window</div>
         <div class="element-details">
           <div class="element-label">pageXOffset x pageYOffset:</div>
           <div class="element-value" id="window-page-xy-offset"></div>
@@ -168,7 +188,7 @@
     </article>
   </article>
 
-  <article id="lorem-ipsum"></article>
+  <article id="lorem-ipsum" class="frozen"></article>
 
 </body>
 </html>
