@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Understanding viewport</title>
+  <style>
+    .main {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: lightgrey;
+      font-size: 150%;
+      border-radius: 10px;
+    }
+
+    .section {
+      background: darkgray;
+      margin: 10px;
+      padding: 5px;
+      border-radius: 10px;
+    }
+
+    .element {
+      background: gray;
+      margin: 10px;
+      padding: 5px;
+      border-radius: 10px;
+    }
+
+    .element-title, .section-title {
+      font-weight: bold;
+    }
+
+    .element-label {
+      font-style: italic;
+    }
+
+    .element-details {
+      overflow: auto;
+    }
+
+    .element-label, .element-value {
+      float: left;
+      margin-right: 5px;
+    }
+
+    @media only screen and (max-width: 1024px) {
+      .main {
+        font-size: 200%;
+      }
+    }
+
+    @media only screen and (max-width: 980px) {
+      .main {
+        font-size: 250%;
+      }
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript">
+      function updateLoremIpsum() {
+          for(var i=0; i<100; i++) {
+              $("#lorem-ipsum").append('Lorem ipsum dolor sit amet, quo debet audire an.'
+                  + ' Vim decore labore philosophia ut, ea reque inani pri, nec cu error exerci aperiri.'
+                  + ' An quo dicta novum. Eam an soleat qualisque, id nec nemore putant alterum, eos omittam sensibus mnesarchum ex. '
+                  + ' Latine legendos conceptam pri eu.');
+          }
+      }
+
+      function updateDevicePixels() {
+          $('#screen-wh').html(screen.width + ' x ' + screen.height + ' px');
+      }
+
+      function updateCSSPixels() {
+          $('#html-wh').html(document.documentElement.offsetWidth + ' x ' + document.documentElement.offsetHeight + ' px');
+          $('#viewport-wh').html(document.documentElement.clientWidth + ' x ' + document.documentElement.clientHeight + ' px');
+          $('#window-inner-wh').html(window.innerWidth + ' x ' + window.innerHeight + ' px');
+          $('#window-page-xy-offset').html(window.pageXOffset + ' x ' + window.pageYOffset + ' px');
+      }
+
+      function updateAllPixels() {
+          updateDevicePixels();
+          updateCSSPixels();
+      }
+
+      $(function() {
+          updateLoremIpsum();
+          updateAllPixels();
+      });
+
+      $(window).resize(function() {
+          updateAllPixels();
+      });
+
+      $(window).scroll(function() {
+          updateAllPixels();
+      });
+
+      $(document).click(function (e) {
+          $('#device-xy').html(e.screenX + ' x ' + e.screenY + ' px');
+          $('#html-xy').html(e.pageX + ' x ' + e.pageY + ' px');
+          $('#viewport-xy').html(e.clientX + ' x ' + e.clientY + ' px');
+      });
+  </script>
+</head>
+<body>
+
+  <article class="main">
+    <article class="section">
+      <div class="section-title">Device pixels</div>
+
+      <div class="element">
+        <div class="element-title">screen size</div>
+        <div class="element-details">
+          <div class="element-label">width x height:</div>
+          <div class="element-value" id="screen-wh"></div>
+        </div>
+        <div class="element-details">
+          <div class="element-label">screenX x screenY:</div>
+          <div class="element-value" id="device-xy"></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="section">
+      <div class="section-title">CSS pixels</div>
+
+      <div class="element">
+        <div class="element-title">html (document.documentElement) size </div>
+        <div class="element-details">
+          <div class="element-label">offsetWidth x offsetHeight:</div>
+          <div class="element-value" id="html-wh"></div>
+        </div>
+        <div class="element-details">
+          <div class="element-label">pageX x pageY:</div>
+          <div class="element-value" id="html-xy"></div>
+        </div>
+      </div>
+
+      <div class="element">
+        <div class="element-title">viewport (document.documentElement) size, (-scrollbars) </div>
+        <div class="element-details">
+          <div class="element-label">clientWidth x clientHeight:</div>
+          <div class="element-value" id="viewport-wh"></div>
+        </div>
+        <div class="element-details">
+          <div class="element-label">clientX x clientY:</div>
+          <div class="element-value" id="viewport-xy"></div>
+        </div>
+      </div>
+
+      <div class="element">
+        <div class="element-title">window size (+scrollbars)</div>
+        <div class="element-details">
+          <div class="element-label">innerWidth x innerHeight:</div>
+          <div class="element-value" id="window-inner-wh"></div>
+        </div>
+      </div>
+
+      <div class="element">
+        <div class="element-title">window scrolling offset</div>
+        <div class="element-details">
+          <div class="element-label">pageXOffset x pageYOffset:</div>
+          <div class="element-value" id="window-page-xy-offset"></div>
+        </div>
+      </div>
+    </article>
+  </article>
+
+  <article id="lorem-ipsum"></article>
+
+</body>
+</html>
