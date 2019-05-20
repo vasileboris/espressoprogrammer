@@ -1,8 +1,8 @@
 */.project
-*/.idea/
 */*.iml
 */*.ipr
 */*.iws
 */target
 */.classpath
 */.settings
+.idea
